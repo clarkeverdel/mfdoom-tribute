@@ -1,10 +1,119 @@
-$color-white: #fff;
-$color-black: #222;
+$colors: (
+    'black': (
+        default: #231F20,
+        pitchblack: #000
+    ),
+    'white': (
+        default: #FAF8E1,
+        bright: #FFF
+    ),
+    'grey': (
+        darkest: #212121,
+        darker: #333,
+        dark: #4f4f4f,
+        default: #828282,
+        light: #BDBDBD,
+        lighter: #e5e5e5,
+        lightest: #fafafa
+    ),
+    'yellow': (
+        default: #FDCA00,
+        button: #ffc800,
+    ),
+    'green': (
+        default: #2e9e2e
+    ),
+    'red': (
+        default: #973030
+    ),
+    'blue': (
+        default: #2453de
+    )
+);
 
-$color-gray: #8d9297;
-$color-gray-light: lighten($color-gray, 10%);
-$color-gray-lighter: lighten($color-gray, 20%);
-$color-gray-lightest: lighten($color-gray, 30%);
-$color-gray-dark: darken($color-gray, 10%);
-$color-gray-darker: darken($color-gray, 20%);
-$color-gray-darkest: darken($color-gray, 40%);
+$color-opacity: (
+    smooth: 0.85,
+    half: 0.7,
+    misty: 0.4,
+    faded: 0.1
+);
+
+$color-key: 'default' !default;
+
+@function color(
+  $name: 'yellow',
+  $variant: $color-key,
+  $opacity: 1
+) {
+  $color: null;
+
+  // Get the color spectrum
+  $color-spectrum: map-get($colors, "#{$name}");
+
+  // Get the color variant
+  @if $color-spectrum {
+    $color: map-get($color-spectrum, $variant);
+  }
+
+  // Get the alpha setting
+  $alpha: if(type-of($opacity) == 'number', $opacity, map-get($color-opacity, $opacity));
+
+  // Set the alpha of the color
+  @if $alpha {
+    $color: rgba($color, $alpha);
+  }
+
+  @return $color;
+}
+
+.text {
+    @each $color-key, $color-variants in $colors {
+        $base-color-value: map-get($color-variants, 'default');
+
+        &-#{$color-key} {
+          color: $base-color-value;
+        }
+      }
+}
+
+$button-colors: (
+    primary: color(yellow, button),
+    subnav: color(grey, darkest),
+    secondary: color(grey, dark),
+    green: color(green),
+    red: color(red),
+    blue: color(blue),
+    clean: color(white, bright),
+    dark: color(black)
+);
+$button-outline-colors: (
+    primary: color(grey, light),
+    subnav: color(grey, darkest),
+    secondary: color(grey, dark),
+    green: color(black),
+    red: color(black),
+    blue: color(black)
+);
+
+$button-text-colors: (
+    primary: color(black),
+    secondary: color(white, bright),
+    subnav: color(grey, darkest),
+    green: color(white, bright),
+    red: color(white, bright),
+    blue: color(white),
+    clean: color(black),
+    dark: color(white, bright)
+);
+
+@each $color, $value in $colors {
+    .text {
+        &--#{''+$color} {
+            color: map-get($value, 'default');
+        }
+    }
+}
+
+.text--light {
+  color: color(white);
+}

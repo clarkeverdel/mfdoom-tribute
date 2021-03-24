@@ -1,11 +1,11 @@
 export default {
-    title: 'Next Boilerplate',
-    description: 'An opinionated Next.js boilerplate',
+    title: 'The super villain MF DOOM',
+    description: 'A tribute to our super villain.',
     image: null,
-    themeColor: '#ffffff',
+    themeColor: '#231F20',
     locale: 'en',
-    author: 'Next Boilerplate',
+    author: 'Clarke Verdel & Martin Zuidema',
     twitterHandle: null,
-    keywords: 'nextjs, next, react, reactjs, boilerplate, stylelint, eslint, enzyme, jest, scss, storybook, husky, boilerplate, typescript',
-    domain: 'https://github.com/DaveBitter/next-boilerplate'
+    keywords: '',
+    domain: ''
 };

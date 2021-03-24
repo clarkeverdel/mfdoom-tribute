@@ -1,67 +1,189 @@
+$grid-layouts-config: (
+    default: (
+        columns: repeat(2, 1fr [col-start]),
+        rows: auto,
+        gap: rem($grid-gutter-width),
+        // responsive: (
+        //     sm: (
+        //         columns: repeat(2, 1fr [col-start]),
+        //         rows: auto,
+        //         gap: rem($grid-gutter-width),
+        //     )
+        // )
+    ),
+    1: (
+        columns: 1fr,
+        rows: auto,
+        gap: rem($grid-gutter-width)
+    ),
+    2: (
+        columns: 1fr,
+        rows: auto,
+        gap: rem($half-gutter),
+        responsive: (
+            md: (
+                columns: repeat(2, 1fr [col-start]),
+                rows: auto,
+                gap: rem($grid-gutter-width)
+            )
+        )
+    ),
+    6: (
+        columns: 1fr 1fr,
+        rows: auto,
+        gap: 2rem,
+        responsive: (
+            sm: (
+                columns: repeat(4, 1fr [col-start]),
+                rows: auto,
+                gap: 2rem
+            ),
+            md: (
+                columns: repeat(6, 1fr [col-start]),
+                rows: auto,
+                gap: 2rem
+            )
+        )
+    ),
+    footer: (
+        columns: 1fr,
+        gap: 2rem,
+        responsive: (
+            md: (
+                columns: 65px repeat(5, 1fr [col-start]),
+                rows: auto,
+                gap: 2rem
+            )
+        )
+    )
+ )                                                                                                                                                                                   ;
+
+@function grid-attribute($type: columns, $grid-layout-choice: 4) {
+    $grid-columns: null;
+
+    $grid-spectrum: map-get($grid-layouts-config, $grid-layout-choice);
+
+    @if $grid-spectrum {
+        $grid-columns: map-get($grid-spectrum, $type);
+    }
+
+    @return $grid-columns;
+}
+
+@mixin grid($config-name: 4) {
+    grid-template-columns: grid-attribute(columns, $config-name);
+    grid-template-rows: grid-attribute(rows, $config-name);
+    grid-column-gap: grid-attribute(gap, $config-name);
+    grid-row-gap: grid-attribute(gap, $config-name);
+
+    $responsive: grid-attribute(responsive, $config-name);
+
+    @if $responsive {
+        @each $breakpoint, $value in $responsive {
+            @include mq($breakpoint) {
+                grid-template-columns: map-get($value, columns);
+                grid-template-rows: map-get($value, rows);
+                grid-column-gap: map-get($value, gap);
+                grid-row-gap: map-get($value, gap);
+            }
+        }
+    }
+}
+
+// columns:
+.col-full {
+    max-width: 1280px;
+}
+
+.container {
+    // width: 100%;
+    max-width: (map-get($container-max-widths, xl) * 1px) + $grid-gutter-width * 2;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: $grid-gutter-width / 2;
+    padding-left: $grid-gutter-width / 2;
+
+    @include mq(md) {
+        padding-right: $grid-gutter-width;
+        padding-left: $grid-gutter-width;
+    }
+
+    @include mq(lg) {
+        padding-right: calculatevw($grid-gutter-width);
+        padding-left: calculatevw($grid-gutter-width);
+    }
+
+    &.fluid {
+        max-width: map-get($container-max-widths, max) * 1px;
+    }
+
+    > .section-title {
+        margin-bottom: 2rem;
+    }
+}
 
 .grid {
-    display: grid;
-    grid-template-columns: [main-start] 0 [main-inner-start] 1fr 1fr 1fr [main-inner-end] 0 [main-end];
-    grid-gap: $spacing-lrg $spacing-sml;
-    margin: 0 auto;
-
-    + .grid {
-        margin-top: $spacing-xxl;
-    }
-
-    .g0 {
-        grid-column: main-start / main-end;
-    }
-
-    .g2 {
-        max-width: $container-xl;
-    }
-
-    .g4 {
-        max-width: $container-lrg;
-    }
-
-    .g6 {
-        max-width: $container-med;
-    }
-
-    .g2,
-    .g4,
-    .g6 {
-        margin: 0 auto;
-        grid-column: main-inner-start / main-inner-end;
-    }
-
-    .g0,
-    .g2,
-    .g4,
-    .g6 {
-        @media all and (-ms-high-contrast: none) {
-            padding: $spacing-sml;
-        }
-
-        @supports (display: grid) {
-            margin: 0;
+    @each $config-name, $value in $grid-layouts-config {
+        &-#{$config-name} {
+            display: grid;
+            @include grid($config-name);
         }
     }
+}
 
-    @include mq($mq-tab--sml) {
-        grid-template-columns: [main-start] 1fr [main-inner-start] 1fr [content-start] 1fr [body-start] 6fr [body-end] 1fr [content-end] 1fr [main-inner-end] 1fr [main-end];
+.col {
+    position: relative;
+    width: 100%;
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
 
-        .g0 {
-            grid-column: main-start / main-end;
+    @for $i from 1 through 6 {
+        &-#{$i} {
+            grid-column: span $i;
         }
+    }
+}
 
-        .g2 {
-            grid-column: main-inner-start / main-inner-end;
-        }
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -$grid-gutter-width/2;
+    margin-right: -$grid-gutter-width/2;
 
-        .g4 {
-            grid-column: content-start / content-end;
-        }
+    & > * {
+        padding: 0 $grid-gutter-width/2;
+    }
+}
 
-        .g6 {
-            grid-column: body-start / body-end;
-        }
+@each $modifier, $breakpoint in $container-max-widths {
+    .constrain-#{$modifier} {
+        max-width: ($breakpoint * 1px) + $grid-gutter-width * 2;
+    }
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    &-justify-start {
+        justify-content: flex-start;
+    }
+
+    &-justify-center {
+        justify-content: center;
+    }
+
+    &-justify-end {
+        justify-content: flex-end;
+    }
+
+    &-align-center {
+        align-items: center;
+    }
+
+    &-align-end {
+        align-items: flex-end;
     }
 }

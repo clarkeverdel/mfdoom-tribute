@@ -1,0 +1,42 @@
+.songlist {
+    padding: 0;
+    margin: 0;
+
+    &__item {
+        padding: rem(60px) 0;
+        border-top: 1px solid color(white);
+        border-bottom: 1px solid color(white);
+        display: flex;
+        align-items: center;
+    }
+
+    &__id {
+        font-size: rem(20px);
+        display: flex;
+        align-items: center;
+        @include font-stack-heading();
+
+        @include mq(lg) {
+            font-size: calculatevw(20px);
+        }
+
+
+        &:after {
+            content: "";
+            width: $grid-gutter-width;
+            height: 1px;
+            background-color: color(white);
+            display: inline-block;
+            margin: 0px rem(32px);
+        }
+    }
+
+    &__title {
+        margin: 0 $grid-gutter-width 0 0;
+        padding: 0;
+    }
+
+    &__artist {
+        @include text-xl();
+    }
+}

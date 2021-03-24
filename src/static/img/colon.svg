@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 38 85" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="opzet-01" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="supervillain" transform="translate(-643.000000, -6053.000000)" fill="#FAF8E1" fill-rule="nonzero">
+            <g id="Group-17" transform="translate(643.450000, 6053.800000)">
+                <path d="M18.4341637,36 C30.6797153,36 37,29.8248175 37,19.5766423 C37,7.48905109 29.6263345,0 18.4341637,0 C7.24199288,0 0,7.22627737 0,19.5766423 C0,29.8248175 5.26690391,36 18.4341637,36 Z" id="."></path>
+                <path d="M18.4341637,84 C30.6797153,84 37,77.8248175 37,67.5766423 C37,55.4890511 29.6263345,48 18.4341637,48 C7.24199288,48 0,55.2262774 0,67.5766423 C0,77.8248175 5.26690391,84 18.4341637,84 Z" id="."></path>
+            </g>
+        </g>
+    </g>
+</svg>

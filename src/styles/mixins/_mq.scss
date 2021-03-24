@@ -6,7 +6,8 @@
  */
 
 @mixin mq($viewport, $type-of-constraint: width, $direction: min) {
-    @media screen and (#{$direction}-#{$type-of-constraint}: $viewport) {
+    $breakpoint: map_get($grid-breakpoints, $viewport);
+    @media screen and (#{$direction}-#{$type-of-constraint}: #{$breakpoint * 1px}) {
         @content;
     }
 }

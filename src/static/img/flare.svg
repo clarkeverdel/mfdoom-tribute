@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 181 183" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Oval</title>
+    <defs>
+        <filter x="-41.3%" y="-41.3%" width="182.6%" height="182.6%" filterUnits="objectBoundingBox" id="filter-1">
+            <feGaussianBlur stdDeviation="15" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+    </defs>
+    <g id="opzet-01" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="supervillain" transform="translate(-616.000000, -2660.000000)" fill="#FAF8E1">
+            <g id="Group-22" transform="translate(303.000000, 2434.454211)">
+                <circle id="Oval" filter="url(#filter-1)" cx="403.5" cy="317.045789" r="54.5"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

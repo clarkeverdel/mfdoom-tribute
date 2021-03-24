@@ -1,0 +1,21 @@
+.section--quote {
+    // padding: calc(var(--grid-gutter-width) * 4) 0 0
+
+    .section__circle {
+        z-index: 2;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-40%, 0);
+
+        @include mq(lg) {
+            width: calculatevw(586px);
+            height: calculatevw(568px);
+        }
+    }
+
+    .section__blockquote {
+        z-index: 2;
+        margin-top: -8%;
+    }
+}

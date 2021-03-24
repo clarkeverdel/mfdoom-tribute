@@ -34,4 +34,32 @@
 	font-style: normal;
 	font-display: block;
 }
+
+// Ohno BlazeFace
+
+@font-face {
+	font-family: 'Ohno Blazeface';
+	src:
+   		local('Ohno Blazeface 14'),
+		local('OhnoBlazefaceDemo-14'),
+		url('/static/fonts/ohno-blazeface/OhnoBlazefaceDemo-14Point.otf');
+	font-weight: $font-weight-regular;
+	font-style: normal;
+	font-display: block;
+}
+
+@font-face {
+	font-family: 'Ohno Blazeface';
+	src:
+   		local('Ohno Blazeface 24'),
+		local('OhnoBlazefaceDemo-24'),
+		url('/static/fonts/ohno-blazeface/OhnoBlazefaceDemo-24Point.otf');
+	font-weight: $font-weight-bold;
+	font-style: normal;
+	font-display: block;
+}
+
+
 /* stylelint-enable */
+
+

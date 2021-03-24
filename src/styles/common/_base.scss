@@ -1,27 +1,36 @@
 html {
     overflow-x: hidden;
+    background-color: color(black);
+    color: color(white);
 }
 
 body,
 #__next {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 body {
     -webkit-font-smoothing: antialiased;
+    font-size: rem(16px);
+
+    @include mq(lg) {
+        font-size: calculateVw(16px);
+    }
+}
+
+main {
+    display: block;
+    // display: flex;
+    // flex-direction: column;
 }
 
 img {
     max-width: 100%;
 }
 
-svg {
-    width: $spacing-med;
-}
+// svg {
+//     width: $spacing-med;
+// }
 
 /*
     This will hide the focus indicator if the element receives focus via the mouse,
@@ -29,4 +38,13 @@ svg {
 */
 .js-focus-visible :focus:not(.focus-visible) {
     outline: none;
+}
+
+
+.horizontal-line-spacer {
+    display: inline-flex;
+    width: rem(60px);
+    height: rem(1px);
+    background-color: color(white);
+    align-self: center;
 }

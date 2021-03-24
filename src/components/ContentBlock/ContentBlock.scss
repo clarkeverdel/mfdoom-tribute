@@ -1,0 +1,19 @@
+.contentblock {
+    $parent: &;
+    display: grid;
+    @include grid(2);
+
+    &__image {
+        position: relative;
+        display: flex;
+    }
+
+    &--image-right {
+        #{$parent}__image {
+            order: 2;
+        }
+        #{$parent}__content {
+            order: 1;
+        }
+    }
+}

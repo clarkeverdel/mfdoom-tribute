@@ -1,9 +1,35 @@
-/** Containers */
-$container-sml: rem(460px);
-$container-med: rem(890px);
-$container-lrg: rem(1140px);
-$container-xl: rem(1440px);
-$container-content: rem(40em);
+$design-reference-width: 1440px;
+
+/** Grid */
+$grid-gutter-width: 60px;
+
+$one-third-gutter: (1/3) * 1 * $grid-gutter-width;
+$two-third-gutter: (1/3) * 2 * $grid-gutter-width;
+$half-gutter: (1/2) * 1 * $grid-gutter-width;
+
+$grid-breakpoints: (
+    // Extra small screen / phone
+    xs: 0,
+    // Small screen / phone
+    sm: 576,
+    // Medium screen / tablet
+    md: 768,
+    // Large screen / desktop
+    lg: 992,
+    // Extra large screen / wide desktop
+    xl: 1200,
+    // Extra Extra largte screen / technology 🥳
+    xxl: 1500
+);
+
+$container-max-widths: (
+    sm: 480,
+    md: 720,
+    lg: 960,
+    xl: 1150,
+    xxl: 1440,
+    max: 1920
+);
 
 /** Block */
 $spacing-base: rem(8px);
@@ -28,8 +54,8 @@ $border-radius-sml: rem(2px);
 $border-radius-med: rem(4px);
 $border-radius-lrg: rem(8px);
 $border-radius-xl: rem(16px);
-$box-shadow-default--hard: 0 rem(2px) rem(5px) rgba($color-black, 0.1);
-$box-shadow-default--soft: 0 rem(5px) rem(10px) rgba($color-black, 0.1);
+$box-shadow-default--hard: 0 rem(2px) rem(5px) color(black, $opacity: faded);
+$box-shadow-default--soft: 0 rem(5px) rem(10px) color(black, $opacity: faded);
 
 /** Transition & animation */
 $transition-timing-fast: 0.15s;
@@ -43,13 +69,6 @@ $transition-easing-out: ease-out;
 $transition-easing-cubic: cubic-bezier(0.4, 0, 0.2, 1);
 $transition-easing-cubic: cubic-bezier(0.165, 0.84, 0.44, 1);
 
-/** Media query */
-$mq-mob: rem(480px);
-$mq-mob--lrg: rem(640px);
-
-$mq-tab--sml: rem(768px);
-$mq-tab--lrg: rem(820px);
-
-$mq-desk--sml: rem(960px);
-$mq-desk--med: rem(1200px);
-$mq-desk--lrg: rem(1440px);
+:root {
+    --grid-gutter-width: $grid-gutter-width;
+}

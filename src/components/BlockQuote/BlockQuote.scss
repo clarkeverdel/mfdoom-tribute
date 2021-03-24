@@ -1,0 +1,50 @@
+.blockquote {
+    padding: 0;
+    margin: 0;
+
+    &__heading {
+        position: relative;
+        z-index: 1;
+
+        > *:nth-child(1){
+            text-align: center;
+            padding-left: 10vw;
+        }
+        > *:nth-child(2){
+            text-align: left;
+        }
+        > *:nth-child(3){
+            padding-left: 14vw;
+        }
+        > *:nth-child(4){}
+        
+        > *:nth-child(5) {
+            text-align: center;
+            padding-left: 10vw;
+        }
+    }
+
+    &__footer {
+        @include text-xl;
+        display: flex;
+        align-items: center;
+
+        &:before {
+            content: "";
+            height: 1px;
+            width: rem(60px);
+            display: inline-flex;
+            background-color: #FFF;
+            margin-right: rem(16px);
+        }
+        
+        > * {
+            margin-right: rem(8px);
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+    
+}

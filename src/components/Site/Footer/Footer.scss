@@ -1,0 +1,70 @@
+.footer {
+    &__top {
+        display: flex;
+        justify-content: flex-start;
+        padding: $grid-gutter-width/2 0;
+
+        @include mq(lg) {
+            padding: calculatevw($grid-gutter-width/2) 0;
+        }
+
+        > * {
+            flex: 1;
+
+            &:nth-child(2) {
+                text-align: right;
+            }
+        }
+    }
+
+    &__middle {
+        padding: $grid-gutter-width 0;
+        border-top: 1px solid color(white);
+        border-bottom: 1px solid color(white);
+
+        @include mq(lg) {
+            padding: calculatevw($grid-gutter-width) 0;
+        }
+    }
+
+    &__bottom {
+        padding: $grid-gutter-width/2 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        @include mq(lg) {
+            padding: calculatevw($grid-gutter-width/2) 0;
+        }
+
+        > * {
+            display: flex;
+            align-items: center;
+
+            &:nth-child(2) {
+                justify-content: center;
+            }
+
+            &:nth-child(3) {
+                justify-content: flex-end;
+            }
+        }
+    }
+
+    &__dates {
+        display: flex;
+        margin: 0 rem(-12px);
+
+        @include mq(lg) {
+            margin: 0 calculatevw(-12px);
+        }
+
+        > * {
+            padding: 0 rem(12px);
+            display: flex;
+
+            @include mq(lg) {
+                padding: 0 calculatevw(12px);
+            }
+        }
+    }
+}

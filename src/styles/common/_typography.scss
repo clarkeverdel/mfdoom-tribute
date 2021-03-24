@@ -1,6 +1,10 @@
 // Falbacks
 @mixin font-stack-base {
-    font-family: 'Public Sans', 'Open Sans', sans-serif;
+    font-family: 'Apercu', 'Open Sans', sans-serif;
+}
+
+@mixin font-stack-heading {
+    font-family: 'Ohno Blazeface', sans-serif;
 }
 
 @mixin text-link {
@@ -12,36 +16,70 @@
 
 @mixin text-jumbo {
     font-size: rem(120px);
+
+    @include mq(lg) {
+        font-size: calculatevw(120px)
+    }
 }
 
 @mixin text-xxxl {
     font-size: rem(64px);
+
+    @include mq(lg) {
+        font-size: calculatevw(64px)
+    }
 }
 
 @mixin text-xxl {
     font-size: rem(48px);
+
+    @include mq(lg) {
+        font-size: calculatevw(48px)
+    }
 }
 
 @mixin text-xl {
-    font-size: rem(36px);
+    font-size: rem(30px);
+
+    @include mq(lg) {
+        font-size: calculatevw(30px)
+    }
 }
 
 @mixin text-l {
-    font-size: rem(24px);
+    font-size: rem(22px);
+    line-height: 1.2;
+
+    @include mq(lg) {
+        font-size: calculatevw(22px)
+    }
 }
 
 @mixin text-m {
     font-size: rem(18px);
+
+    @include mq(lg) {
+        font-size: calculatevw(18px)
+    }
 }
 
 @mixin text-s {
     font-size: rem(16px);
     line-height: 1.6;
+
+    @include mq(lg) {
+        font-size: calculatevw(16px)
+    }
 }
 
 @mixin text-xs {
     font-size: rem(14px);
     line-height: rem(20px);
+
+    @include mq(lg){
+        font-size: calculatevw(14px);
+        line-height: calculatevw(20px);
+    }
 }
 
 @mixin text-xxs {
@@ -50,47 +88,61 @@
 
 /* stylelint-disable */
 @mixin heading($size) {
+    font-family: "Ohno Blazeface";
+
     font-size:
         map-get((
             h1: rem(32px),
-            h2: rem(24px),
+            h2: rem(50px),
             h3: rem(24px),
-            h4: rem(24px),
-            h5: rem(20px),
+            h4: rem(20px),
+            h5: rem(18px),
             h6: rem(16px)
         ), $size);
+
     line-height:
         map-get((
             h1: 1.2,
-            h2: 1.2,
+            h2: .96,
             h3: 1.2,
             h4: 1.2,
             h5: 1.2,
             h6: 1.2
         ), $size);
-    font-weight: normal;
 
-    @include mq($mq-tab--sml) {
+    font-weight: $font-weight-bold;
+
+    @include mq(md) {
         font-size:
         map-get((
             h1: rem(45px),
-            h2: rem(32px),
+            h2: rem(100px),
             h3: rem(24px),
-            h4: rem(24px),
+            h4: rem(22px),
             h5: rem(20px),
             h6: rem(16px)
         ), $size);
     }
 
-    @include mq($mq-desk--sml) {
+    @include mq(lg) {
         font-size:
         map-get((
-            h1: rem(60px),
-            h2: rem(45px),
-            h3: rem(32px),
-            h4: rem(24px),
+            h1: calculatevw(200px), // 200px at 1440px,
+            h2: calculatevw(150px), // 150px at 1440px,
+            h3: calculatevw(60px), // 60px at 1440px,
+            h4: rem(30px),
             h5: rem(20px),
             h6: rem(16px)
+        ), $size);
+
+        line-height:
+        map-get((
+            h1: calculatevw(200px),
+            h2: calculatevw(150px),
+            h3: 1.2,
+            h4: 1.2,
+            h5: 1.2,
+            h6: 1.2
         ), $size);
     }
 }
@@ -160,23 +212,22 @@ p,
     [class$='--primary'] &,
     .section--primary &,
     .overlay--primary & {
-        color: $color-white;
+        color: color(white);
     }
 
     &--large {
-        @include heading(h5);
+        @include text-l;
 
         p {
-            @include heading(h5);
+            @include text-l;
         }
     }
 
     &--jumbo {
-        @include heading(h3);
-        line-height: 1.6;
+        @include text-xl;
 
         p {
-            @include heading(h3);
+            @include text-xl;
         }
     }
 }

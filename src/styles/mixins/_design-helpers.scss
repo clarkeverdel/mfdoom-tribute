@@ -1,0 +1,11 @@
+// Calculates VW based on design width
+// In this project that's 1440px
+@function calculatevw($pixelSize) {
+    @return ($pixelSize/$design-reference-width)*100 * 1vw;
+}
+
+@mixin childImage() {
+    display: block;
+    width: 100%;
+    height: auto;
+}

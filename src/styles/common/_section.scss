@@ -1,0 +1,47 @@
+.section {
+    position: relative;
+    min-height: 100vh;
+    padding: ($grid-gutter-width * 4) 0;
+
+    @include mq(lg) {
+        padding: calculatevw($grid-gutter-width * 4) 0;
+    }
+
+    &.half-padding {
+        padding: ($grid-gutter-width * 2) 0;
+
+        @include mq(lg) {
+            padding: calculatevw($grid-gutter-width * 2) 0;
+        }
+    }
+
+    &.no-padding {
+        padding: 0;
+    }
+
+    &__inner {
+        position: relative;
+    }
+
+    &__title {
+        &--tilted {
+            position: absolute;
+            top: 0%;
+            left: -7vh;
+            font-size: 28vh;
+            transform: rotate(90deg) translateX(-50%);
+            transform-origin: bottom left;
+            white-space: nowrap;
+        }
+
+        &__colon {
+            height: 85px;
+            width: auto;
+            display: inline-block;
+
+            @include mq(lg) {
+                height: calculatevw(85px);
+            }
+        }
+    }
+}

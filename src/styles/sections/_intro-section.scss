@@ -1,0 +1,25 @@
+// Specific styles for intro section
+.section {
+    $parent: &;
+
+    &--intro {
+        position: relative;
+
+        #{$parent}__circle {
+            z-index: 2;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-75%, 0);
+
+            @include mq(lg) {
+                width: calculatevw(531px);
+                height: calculatevw(531px);
+            }
+        }
+
+        #{$parent}__content {
+            max-width: 75%;
+        }
+    }
+}
