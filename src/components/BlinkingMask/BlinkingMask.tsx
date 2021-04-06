@@ -5,7 +5,7 @@ import TheIllestSvg from '../../static/img/the_illest.svg'
 
 interface BlinkingMask {}
 
-const BlinkingMask = (): BlinkingMask => {
+const BlinkingMask: BlinkingMask = () => {
     return (
         <div className="blinking-mask">
             <div className="blinking-mask__phrase blinking-mask__phrase--1"><TheIllestSvg /></div>
