@@ -8,6 +8,7 @@ import BubBlackLogo from '../../static/img/logo/bubblack.svg';
 
 // Components
 import Banner from '../Banner/Banner';
+import Mask from '../Mask/Mask'
 
 // Interface
 interface PageHeading { }
@@ -15,6 +16,7 @@ interface PageHeading { }
 
 const PageHeading = ({ }: PageHeading) => {
     return <div className="pageheading">
+        <Mask />
         <div className="pageheading__corner-banners">
             <div className="pageheading__inner">
                 <Banner type="circle" count={1}>
