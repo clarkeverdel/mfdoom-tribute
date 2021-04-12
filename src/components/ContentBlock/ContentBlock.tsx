@@ -1,25 +1,23 @@
 import Image from 'next/image'
+import React, { FunctionComponent } from 'react'
 
-interface ContentBlock {
-    children: React.ReactNode
-    image?: {
-        src?: string
-        alt?: string
-        width?: number
-        height?: number
-        position?: string
-    }
+type ContentBlock = {
+    className?: string
+    layout?: string
+    image: any // todo
+    [x:string]: any
 }
 
-const ContentBlock = ({ children, image }: ContentBlock) => {
-    const { src, alt, width, height, position = 'left' } = image || {}
-    const layout = width && height ? `intrinsic` : `full`
+const ContentBlock: FunctionComponent<ContentBlock>  = ({ className, image, children } ) => {
+    const { src, alt, width, height, position } = image
+    // layout = (width && height) && 'fill'
+    className = `contentblock ${className}`
 
     return(
-        <div className={position ? `contentblock contentblock--image-${position}` : `contentblock`}>
+        <div className={position ? `${className} contentblock--image-${position}` : className}>
             {src && (
                 <div className={`contentblock__image`}>
-                    <Image src={src} alt={alt} width={width} height={height} layout={layout} />
+                    <Image src={src} alt={alt} width={width} height={height} layout='intrinsic' />
                 </div>
             )}
 

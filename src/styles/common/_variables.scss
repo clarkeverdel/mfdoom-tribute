@@ -54,8 +54,8 @@ $border-radius-sml: rem(2px);
 $border-radius-med: rem(4px);
 $border-radius-lrg: rem(8px);
 $border-radius-xl: rem(16px);
-$box-shadow-default--hard: 0 rem(2px) rem(5px) color(black, $opacity: faded);
-$box-shadow-default--soft: 0 rem(5px) rem(10px) color(black, $opacity: faded);
+$box-shadow-default--hard: 0 rem(2px) rem(5px) color(black, default, faded);
+$box-shadow-default--soft: 0 rem(5px) rem(10px) color(black, default, faded);
 
 /** Transition & animation */
 $transition-timing-fast: 0.15s;

@@ -2,6 +2,9 @@
 import React from 'react';
 import { GetStaticProps } from 'next'
 
+// Types
+import { Song } from '../types'
+
 // Data
 import { songs } from '../src/data/index'
 
@@ -19,14 +22,12 @@ import PageHeading from '../src/components/PageHeading/PageHeading'
 import SongList from '../src/components/SongList/SongList'
 import Footer from '../src/components/Site/Footer/Footer'
 
-// Interface
-interface IProps { 
-    songList: {}
+interface IProps {
+    songs: Song[]
 }
 
-
 // Component
-const Home = ({ songList }: IProps) => {
+const Home: React.FC<IProps> = ({songs}) => {
     return <>
         <PageHeading />
         <IntroSection />
@@ -39,7 +40,7 @@ const Home = ({ songList }: IProps) => {
             <div className="container grid-1">
                 <div className="col-1">
                     <h2>Listen <ColonSvg className="section__title__colon"/></h2>
-                    <SongList songs={songs}/>
+                    <SongList songs={songs} />
                 </div>
             </div>
         </section>
@@ -53,7 +54,7 @@ const Home = ({ songList }: IProps) => {
 export const getStaticProps: GetStaticProps = async() => {
     return {
         props: { 
-            songList: songs
+            songs
         }
     }
 }

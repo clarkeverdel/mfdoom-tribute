@@ -18,7 +18,7 @@ $colors: (
     ),
     'yellow': (
         default: #FDCA00,
-        button: #ffc800,
+        button: #ffc800
     ),
     'green': (
         default: #2e9e2e
@@ -54,7 +54,7 @@ $color-key: 'default' !default;
   @if $color-spectrum {
     $color: map-get($color-spectrum, $variant);
   }
-
+  
   // Get the alpha setting
   $alpha: if(type-of($opacity) == 'number', $opacity, map-get($color-opacity, $opacity));
 

@@ -1,11 +1,14 @@
+import React, { FunctionComponent } from 'react'
+
+// Resources
 import FlareSvg from '../../static/img/flare.svg'
 import LargeBeamsSvg from '../../static/img/beams_large.svg'
 import SmallBeamsSvg from '../../static/img/beams_small.svg'
 import TheIllestSvg from '../../static/img/the_illest.svg'
 
-interface BlinkingMask {}
+type BlinkingMask = {}
 
-const BlinkingMask: BlinkingMask = () => {
+const BlinkingMask: FunctionComponent<BlinkingMask> = () => {
     return (
         <div className="blinking-mask">
             <div className="blinking-mask__phrase blinking-mask__phrase--1"><TheIllestSvg /></div>

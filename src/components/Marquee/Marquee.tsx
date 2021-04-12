@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import useInterval from '../../static/js/utils/hooks/useInterval'
 
 interface Marquee {
@@ -7,8 +7,8 @@ interface Marquee {
 
 const Marquee = ( { children }: Marquee ) => {
 
-    const containerRef = useRef()
-    const trackRef = useRef()
+    const containerRef = useRef<HTMLDivElement>(null!)
+    const trackRef = useRef<HTMLDivElement>(null!)
 
     const animationDuration = 5000
     const [trackStyle, setTrackStyle] = useState('translate3d(0, 0, 0)')
@@ -19,8 +19,8 @@ const Marquee = ( { children }: Marquee ) => {
         const container = containerRef.current
         const track = trackRef.current
 
-        const containerWidth = container.offsetWidth
-        const trackWidth = track.offsetWidth
+        const containerWidth = container?.offsetWidth
+        const trackWidth = track?.offsetWidth
         const moveWidth = trackWidth - containerWidth
 
         if(scrollDirection === 'left') setScrollDirection('right')

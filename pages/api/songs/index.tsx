@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { songs } from '../src/data/'
+import { songs } from '../../../src/data/'
 
 type Data = {
     title: string

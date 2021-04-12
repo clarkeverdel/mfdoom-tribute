@@ -1,17 +1,13 @@
+import React from 'react'
 import SongListItem from '../SongListItem/SongListItem'
+import { Song } from '../../../types'
 
-interface Songs {
-    songs?: {
-        title: string
-        artist: string
-        image: string
-        audio: string
-    }
+interface SongList {
+    songs: Song[]
 }
 
-const SongList = ({ songs }: Songs) => {
-    
-    const listItems = songs.map(song => {
+const SongList: React.FC<SongList> = ({ songs }) => {
+    const listItems = songs.map((song) => {
         const { id } = song
         return <SongListItem key={id} { ...song } />
     })

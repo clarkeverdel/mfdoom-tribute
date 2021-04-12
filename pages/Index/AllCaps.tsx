@@ -4,9 +4,7 @@ import Styles from './AllCaps.module.scss'
 // Components
 import BlinkingMask from '../../src/components/BlinkingMask/BlinkingMask'
 
-interface AllCaps {}
-
-const AllCaps = (): AllCaps => {
+const AllCaps = () => {
     return (
         <section className={`section ${Styles.section}`}>
             <div className={`section__inner ${Styles.section}`}>

@@ -1,7 +1,7 @@
 {
-    "name": "Next Boilerplate",
-    "short_name": "Next Boilerplate",
-    "description": "An opinionated Next.js boilerplate",
+    "name": "MF Doom",
+    "short_name": "A tribute to MF Doom",
+    "description": "",
     "scope": "/",
     "start_url": "/",
     "display": "standalone",

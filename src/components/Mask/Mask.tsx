@@ -9,14 +9,14 @@ import React, { useEffect, useRef, useState } from 'react'
 
 const Mask = () => {
 
-    const mount = useRef<HTMLDivElement>(null)
-    const controls = useRef(null)
+    const mount: any = useRef<HTMLDivElement | Function>(null!)
+    const controls: any = useRef<HTMLDivElement>(null!)
     const [isAnimating, setAnimating] = useState(true)
 
     useEffect(() => {
-        let width = mount.current?.clientWidth
-        let height = mount.current?.clientHeight
-        let frameId
+        let width: number = mount.current.clientWidth
+        let height: number = mount.current.clientHeight
+        let frameId: number
     
         const scene = new THREE.Scene()
         const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
@@ -32,7 +32,6 @@ const Mask = () => {
         camera.add( pointLight );
 
         scene.add(camera)
-
 
     
         // camera.position.z = 2
@@ -75,7 +74,7 @@ const Mask = () => {
           renderer.render(scene, camera)
         }
     
-        const handleResize = () => {
+        const handleResize = ():void => {
           width = mount.current.clientWidth
           height = mount.current.clientHeight
           renderer.setSize(width, height)
@@ -84,7 +83,7 @@ const Mask = () => {
           renderScene()
         }
         
-        const animate = () => {
+        const animate = ():void  => {
             if(freedomMesh){
                 freedomMesh.rotation.x += 0.001
                 freedomMesh.rotation.y += 0.001
@@ -94,15 +93,15 @@ const Mask = () => {
           frameId = window.requestAnimationFrame(animate)
         }
     
-        const start = () => {
+        const start = (): void => {
           if (!frameId) {
             frameId = requestAnimationFrame(animate)
           }
         }
     
-        const stop = () => {
+        const stop = (): void => {
           cancelAnimationFrame(frameId)
-          frameId = null
+          frameId = 0
         }
     
         mount.current.appendChild(renderer.domElement)
