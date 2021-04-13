@@ -12,6 +12,10 @@
             width: calculatevw(586px);
             height: calculatevw(568px);
         }
+        @include mq(xxl) {
+            width: rem(586px);
+            height: rem(568px);
+        }
     }
 
     .section__blockquote {

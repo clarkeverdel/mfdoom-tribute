@@ -16,6 +16,11 @@
                 width: calculatevw(531px);
                 height: calculatevw(531px);
             }
+
+            @include mq(xxl) {
+                width: rem(531px);
+                height: rem(531px);
+            }
         }
 
         #{$parent}__content {

@@ -1,4 +1,6 @@
 .footer {
+    position: relative;
+
     &__top {
         display: flex;
         justify-content: flex-start;
@@ -6,6 +8,9 @@
 
         @include mq(lg) {
             padding: calculatevw($grid-gutter-width/2) 0;
+        }
+        @include mq(xxl) {
+            padding: rem($grid-gutter-width/2) 0;
         }
 
         > * {
@@ -25,6 +30,9 @@
         @include mq(lg) {
             padding: calculatevw($grid-gutter-width) 0;
         }
+        @include mq(xxl) {
+            padding: rem($grid-gutter-width) 0;
+        }
     }
 
     &__bottom {
@@ -34,6 +42,9 @@
 
         @include mq(lg) {
             padding: calculatevw($grid-gutter-width/2) 0;
+        }
+        @include mq(xxl) {
+            padding: rem($grid-gutter-width/2) 0;
         }
 
         > * {
@@ -57,6 +68,9 @@
         @include mq(lg) {
             margin: 0 calculatevw(-12px);
         }
+        @include mq(xxl) {
+            margin: 0 rem(-12px);
+        }
 
         > * {
             padding: 0 rem(12px);
@@ -64,6 +78,9 @@
 
             @include mq(lg) {
                 padding: 0 calculatevw(12px);
+            }
+            @include mq(xxl) {
+                padding: 0 rem(12px);
             }
         }
     }

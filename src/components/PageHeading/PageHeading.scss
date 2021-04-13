@@ -39,6 +39,9 @@ $surrounding-padding: 3.5rem;
                         @include mq(lg) {
                             margin-bottom: calculatevw(100px);
                         }
+                        @include mq(xxl) {
+                            margin-bottom: rem(100px);
+                        }
                     }
 
                     &:nth-child(2) {
@@ -52,13 +55,22 @@ $surrounding-padding: 3.5rem;
             }
 
             &:nth-child(3) {
+                margin-left: rem(140px);
+
+                @include mq(lg){
+                    margin-left: calculatevw(140px);
+                }
+                @include mq(xxl){
+                    margin-left: rem(140px);
+                }
+
                 > *:nth-child(2) {
                     margin-left: 2rem;
                 }
             }
 
             &:nth-child(4){
-
+                
             }
         }
 
@@ -66,6 +78,10 @@ $surrounding-padding: 3.5rem;
             @include mq(lg) {
                 margin: 0 0 0 calculatevw(60px);
                 width: calculatevw(359px);
+            }
+            @include mq(xxl) {
+                margin: 0 0 0 rem(60px);
+                width: rem(359px);
             }
         }
     }

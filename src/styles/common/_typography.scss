@@ -20,6 +20,9 @@
     @include mq(lg) {
         font-size: calculatevw(120px)
     }
+    @include mq(xxl) {
+        font-size: rem(120px)
+    }
 }
 
 @mixin text-xxxl {
@@ -27,6 +30,9 @@
 
     @include mq(lg) {
         font-size: calculatevw(64px)
+    }
+    @include mq(xxl) {
+        font-size: rem(64px)
     }
 }
 
@@ -36,6 +42,9 @@
     @include mq(lg) {
         font-size: calculatevw(48px)
     }
+    @include mq(xxl) {
+        font-size: rem(48px)
+    }
 }
 
 @mixin text-xl {
@@ -43,6 +52,9 @@
 
     @include mq(lg) {
         font-size: calculatevw(30px)
+    }
+    @include mq(xxl) {
+        font-size: rem(30px)
     }
 }
 
@@ -53,6 +65,9 @@
     @include mq(lg) {
         font-size: calculatevw(22px)
     }
+    @include mq(xxl) {
+        font-size: rem(22px)
+    }
 }
 
 @mixin text-m {
@@ -60,6 +75,9 @@
 
     @include mq(lg) {
         font-size: calculatevw(18px)
+    }
+    @include mq(xxl) {
+        font-size: rem(18px)
     }
 }
 
@@ -70,6 +88,9 @@
     @include mq(lg) {
         font-size: calculatevw(16px)
     }
+    @include mq(xxl) {
+        font-size: rem(16px)
+    }
 }
 
 @mixin text-xs {
@@ -79,6 +100,10 @@
     @include mq(lg){
         font-size: calculatevw(14px);
         line-height: calculatevw(20px);
+    }
+    @include mq(xxl){
+        font-size: rem(14px);
+        line-height: rem(20px);
     }
 }
 
@@ -139,6 +164,27 @@
         map-get((
             h1: calculatevw(200px),
             h2: calculatevw(150px),
+            h3: 1.2,
+            h4: 1.2,
+            h5: 1.2,
+            h6: 1.2
+        ), $size);
+    }
+    @include mq(xxl) {
+        font-size:
+        map-get((
+            h1: rem(200px), // 200px at 1440px,
+            h2: rem(150px), // 150px at 1440px,
+            h3: rem(60px), // 60px at 1440px,
+            h4: rem(30px),
+            h5: rem(20px),
+            h6: rem(16px)
+        ), $size);
+
+        line-height:
+        map-get((
+            h1: rem(200px),
+            h2: rem(150px),
             h3: 1.2,
             h4: 1.2,
             h5: 1.2,

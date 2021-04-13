@@ -36,6 +36,10 @@
                 width: calculatevw(435px);
                 height: calculatevw(435px);
             }
+            @include mq(xxl) {
+                width: rem(435px);
+                height: rem(435px);
+            }
 
             > svg {
                 @include childImage;
@@ -48,6 +52,10 @@
             @include mq(lg) {
                 width: calculatevw(635px);
                 height: calculatevw(635px);
+            }
+            @include mq(xxl) {
+                width: rem(635px);
+                height: rem(635px);
             }
 
             > svg {
@@ -66,7 +74,10 @@
         @include mq(lg) {
             width: calculatevw(181px);
         }
-
+        @include mq(xxl) {
+            width: rem(181px);
+        }
+        
         svg {
             @include childImage;
         }

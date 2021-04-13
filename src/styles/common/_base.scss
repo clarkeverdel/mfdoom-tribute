@@ -16,6 +16,9 @@ body {
     @include mq(lg) {
         font-size: calculateVw(16px);
     }
+    @include mq(xxl) {
+        font-size: rem(16px);
+    }
 }
 
 main {
