@@ -19,6 +19,9 @@
         @include mq(lg) {
             font-size: calculatevw(20px);
         }
+        @include mq(xxl) {
+            font-size: rem(20px);
+        }
 
 
         &:after {

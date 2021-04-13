@@ -16,6 +16,9 @@
         @include mq(lg) {
             height: calculatevw(30px);
         }
+        @include mq(xxl) {
+            height: rem(30px);
+        }
     }
 
     &[data-type="circle"] {
@@ -34,6 +37,12 @@
             flex: 0 0 calculatevw(180px);
             max-height: calculatevw(82px);
             max-width: calculatevw(180px);
+        }
+        @include mq(xxl) {
+            padding: rem(32px);
+            flex: 0 0 rem(180px);
+            max-height: rem(82px);
+            max-width: rem(180px);
         }
     }
 }

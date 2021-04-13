@@ -112,6 +112,10 @@ $grid-layouts-config: (
         padding-right: calculatevw($grid-gutter-width);
         padding-left: calculatevw($grid-gutter-width);
     }
+    @include mq(xxl) {
+        padding-right: rem($grid-gutter-width);
+        padding-left: rem($grid-gutter-width);
+    }
 
     &.fluid {
         max-width: map-get($container-max-widths, max) * 1px;
