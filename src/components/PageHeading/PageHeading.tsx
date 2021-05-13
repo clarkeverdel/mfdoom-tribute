@@ -16,7 +16,7 @@ interface PageHeading { }
 
 const PageHeading = ({ }: PageHeading) => {
     return <div className="pageheading">
-        <Mask />
+        {/* <Mask /> */}
         <div className="pageheading__corner-banners">
             <div className="pageheading__inner">
                 <Banner type="circle" count={1}>

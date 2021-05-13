@@ -5,6 +5,11 @@
         display: flex;
         justify-content: flex-start;
         padding: $grid-gutter-width/2 0;
+        flex-direction: column;
+
+        @include mq(md){
+            flex-direction: row;
+        }
 
         @include mq(lg) {
             padding: calculatevw($grid-gutter-width/2) 0;
@@ -17,7 +22,11 @@
             flex: 1;
 
             &:nth-child(2) {
-                text-align: right;
+                text-align: center;
+
+                @include mq(md){
+                    text-align: right;
+                }
             }
         }
     }
@@ -38,7 +47,11 @@
     &__bottom {
         padding: $grid-gutter-width/2 0;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(1, 1fr);
+        
+        @include mq(md){
+            grid-template-columns: repeat(3, 1fr);
+        }
 
         @include mq(lg) {
             padding: calculatevw($grid-gutter-width/2) 0;
@@ -56,7 +69,11 @@
             }
 
             &:nth-child(3) {
-                justify-content: flex-end;
+                justify-content: center;
+
+                @include mq(md){
+                    justify-content: flex-end;
+                }
             }
         }
     }
@@ -64,6 +81,11 @@
     &__dates {
         display: flex;
         margin: 0 rem(-12px);
+        justify-content: center;
+
+        @include mq(md){
+            justify-content: flex-start;
+        }
 
         @include mq(lg) {
             margin: 0 calculatevw(-12px);

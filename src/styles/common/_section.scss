@@ -33,12 +33,21 @@
     &__title {
         &--tilted {
             position: absolute;
-            top: 0%;
-            left: -7vh;
-            font-size: 28vh;
-            transform: rotate(90deg) translateX(-50%);
-            transform-origin: bottom left;
-            white-space: nowrap;
+            top: 50%;
+            display: block;
+            height: auto;
+            transform: translateY(-50%);
+            width: calculatevw(130px);
+
+            @include mq(lg) {
+                left: calculatevw(-5px);
+                width: calculatevw(130px);
+            }
+
+            @include mq(xl) {
+                left: rem(-5px);
+                width: rem(130px);
+            }
         }
 
         &__colon {

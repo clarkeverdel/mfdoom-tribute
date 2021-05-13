@@ -137,19 +137,19 @@
 
     font-weight: $font-weight-bold;
 
-    @include mq(md) {
-        font-size:
-        map-get((
-            h1: rem(45px),
-            h2: rem(100px),
-            h3: rem(24px),
-            h4: rem(22px),
-            h5: rem(20px),
-            h6: rem(16px)
-        ), $size);
-    }
+    // @include mq(md) {
+    //     font-size:
+    //     map-get((
+    //         h1: rem(45px),
+    //         h2: rem(100px),
+    //         h3: rem(24px),
+    //         h4: rem(22px),
+    //         h5: rem(20px),
+    //         h6: rem(16px)
+    //     ), $size);
+    // }
 
-    @include mq(lg) {
+    @include mq(sm) {
         font-size:
         map-get((
             h1: calculatevw(200px), // 200px at 1440px,
