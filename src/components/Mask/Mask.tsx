@@ -1,6 +1,9 @@
 import * as THREE from 'three'
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { VRButton } from 'three/examples/jsm/webxr/VRButton';
+
 import React, { useEffect, useRef, useState } from 'react'
 
 // https://codesandbox.io/s/brave-violet-l9r01k94pm?from-embed=&file=/src/ThreeScene.js
@@ -11,6 +14,7 @@ const Mask = () => {
 
     const mount: any = useRef<HTMLDivElement | Function>(null!)
     const controls: any = useRef<HTMLDivElement>(null!)
+    const vrButton: any = useRef<HTMLDivElement>(null!)
     const [isAnimating, setAnimating] = useState(true)
 
     useEffect(() => {
@@ -21,8 +25,18 @@ const Mask = () => {
         const scene = new THREE.Scene()
         const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
         const renderer = new THREE.WebGLRenderer({ antialias: true })
-        const geometry = new THREE.BoxGeometry(1, 1, 1)
+        // const geometry = new THREE.BoxGeometry(1, 1, 1)
         const material = new THREE.MeshBasicMaterial({ color: 0xff00ff })
+
+        // Controls
+        const orbitControls = new OrbitControls(camera, renderer.domElement)
+        orbitControls.enableZoom = true
+        orbitControls.enablePan = true
+        // orbitControls.addEventListener('change', renderScene)
+
+        // Axes Helper
+        const axesHelper = new THREE.AxesHelper(5)
+        scene.add(axesHelper)
 
         const ambientLight = new THREE.AmbientLight( 0xcccccc, 0.4 );
         scene.add( ambientLight );
@@ -33,8 +47,11 @@ const Mask = () => {
 
         scene.add(camera)
 
+        // GUI
+        const gui = (typeof window !== 'undefined' && dat) && new dat.GUI()
+
     
-        // camera.position.z = 2
+        camera.position.z = 2
         // scene.add(cube)
         renderer.setClearColor('#231f20')
         renderer.setSize(width, height)
@@ -53,12 +70,14 @@ const Mask = () => {
             objLoader.load("./static/models/MFDoom_v2.obj",
                 object => {
                     freedomMesh = object
-                    freedomMesh.position.setY(150) //or  this
-                    freedomMesh.scale.set(2, 2, 1)
+                    // freedomMesh.position.setY(150) //or  this
+                    // freedomMesh.scale.set(2, 2, 1)
 
                     // freedomMesh.geometry.center()
 
                     scene.add(freedomMesh)
+
+                    showGUI()
                 },
                 xhr => {
                     console.log((xhr.loaded / xhr.total) * 100 + "% loaded")
@@ -69,6 +88,35 @@ const Mask = () => {
                 }
             )
         })
+
+        const showGUI = () => {
+          if (gui) {
+            const freedomMeshFolder = gui.addFolder('freedomMesh')
+
+            // Rotation axis controls
+            const rotationFolder = freedomMeshFolder.addFolder('Rotation')
+            ;['x', 'y', 'z'].forEach(axis => {
+              rotationFolder.add(freedomMesh.rotation, axis, 0, Math.PI * 2, 0.01)
+            })
+            rotationFolder.open()
+
+            // Position controls
+            const positionFolder = freedomMeshFolder.addFolder('Position')
+            ;['x', 'y', 'z'].forEach(axis => {
+              positionFolder.add(freedomMesh.position, axis, 0, 1000, 0.01)
+            })
+            positionFolder.open()
+
+            // Scale controls
+            const scaleFolder = freedomMeshFolder.addFolder('scale')
+            ;['x', 'y', 'z'].forEach(axis => {
+              scaleFolder.add(freedomMesh.scale, axis, -100, 100, 0.01)
+            })
+            scaleFolder.open()
+
+            freedomMeshFolder.open()
+          }
+        }
     
         const renderScene = () => {
           renderer.render(scene, camera)
@@ -84,11 +132,11 @@ const Mask = () => {
         }
         
         const animate = ():void  => {
-            if(freedomMesh){
-                freedomMesh.rotation.x += 0.001
-                freedomMesh.rotation.y += 0.001
-            }
-    
+            // if(freedomMesh){
+            //     freedomMesh.rotation.x += 0.001
+            //     freedomMesh.rotation.y += 0.001
+            // }
+            orbitControls.update();
           renderScene()
           frameId = window.requestAnimationFrame(animate)
         }
@@ -97,6 +145,7 @@ const Mask = () => {
           if (!frameId) {
             frameId = requestAnimationFrame(animate)
           }
+          // showGUI()
         }
     
         const stop = (): void => {
@@ -104,19 +153,31 @@ const Mask = () => {
           frameId = 0
         }
     
+        // Append to dom
         mount.current.appendChild(renderer.domElement)
+        document.body.appendChild(VRButton.createButton(renderer))
+
+        // Enable XR for renderer
+        renderer.xr.enabled = true
+
         window.addEventListener('resize', handleResize)
         start()
     
         controls.current = { start, stop }
+
+        // Animation loop for XR
+        renderer.setAnimationLoop(() => {
+            renderer.render( scene, camera );
+        })
         
         return () => {
           stop()
           window.removeEventListener('resize', handleResize)
           mount.current.removeChild(renderer.domElement)
+          gui.destroy()
     
-        //   scene.remove(cube)
-          geometry.dispose()
+          // scene.remove(freedomMesh)
+          // geometry.dispose()
           material.dispose()
         }
     }, [])
@@ -128,51 +189,16 @@ const Mask = () => {
           controls.current.stop()
         }
     }, [isAnimating])
-
-
-    // const addModels = () => {
-    //     // -----Step 1--------
-    //     const geometry = new THREE.BoxGeometry(5, 5, 5);
-    //     const material = new THREE.MeshBasicMaterial({
-    //       color: "#0F0"
-    //     });
-    //     this.cube = new THREE.Mesh(geometry, material);
-    //     this.scene.add(this.cube);
-
-    //     var mtlLoader = new MTLLoader();
-    //     mtlLoader.setBaseUrl("./static/models/");
-
-    //     mtlLoader.load("MFDoom_v2.mtl", materials => {
-    //         materials.preload();
-    //         console.log("Material loaded");
-
-    //         //Load Object Now and Set Material
-    //         const objLoader = new OBJLoader();
-    //         objLoader.setMaterials(materials);
-    //         objLoader.load("./static/models/MFDoom_v2.obj",
-    //             object => {
-    //                 this.freedomMesh = object;
-    //                 this.freedomMesh.position.setY(3); //or  this
-    //                 this.freedomMesh.scale.set(0.02, 0.02, 0.02);
-    //                 this.scene.add(this.freedomMesh);
-    //             },
-    //             xhr => {
-    //                 console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
-    //             },
-    //             // called when loading has errors
-    //             error => {
-    //                 console.log("An error happened" + error);
-    //             }
-    //         );
-    //     });
-    // }
-
-    // useEffect(() => {
-    //     init();
-    // }, [])
     
     return <>
-        <div ref={mount} onClick={() => setAnimating(!isAnimating)} style={{ position: 'fixed', left: 0, top: 0, bottom: 0, right: 0}} />
+        <div ref={mount} onClick={() => setAnimating(!isAnimating)} style={{ 
+          overflow: 'hidden',
+          position: 'fixed', 
+          left: 0, 
+          top: 0, 
+          bottom: 0, 
+          right: 0
+        }} />
     </>
 }
 
