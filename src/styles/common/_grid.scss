@@ -2,24 +2,31 @@ $grid-layouts-config: (
     default: (
         columns: repeat(2, 1fr [col-start]),
         rows: auto,
-        gap: rem($grid-gutter-width),
-        // responsive: (
-        //     sm: (
-        //         columns: repeat(2, 1fr [col-start]),
-        //         rows: auto,
-        //         gap: rem($grid-gutter-width),
-        //     )
-        // )
+        gap: rem($one-third-gutter),
+        responsive: (
+            md: (
+                columns: repeat(2, 1fr [col-start]),
+                rows: auto,
+                gap: rem($grid-gutter-width),
+            )
+        )
     ),
     1: (
         columns: 1fr,
         rows: auto,
-        gap: rem($grid-gutter-width)
+        gap: rem($one-third-gutter),
+        responsive: (
+            md: (
+                columns: 1fr,
+                rows: auto,
+                gap: rem($grid-gutter-width),
+            )
+        )
     ),
     2: (
         columns: 1fr,
         rows: auto,
-        gap: rem($half-gutter),
+        gap: rem($one-third-gutter),
         responsive: (
             md: (
                 columns: repeat(2, 1fr [col-start]),

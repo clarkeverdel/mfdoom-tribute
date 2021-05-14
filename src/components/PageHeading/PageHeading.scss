@@ -2,11 +2,7 @@ $surrounding-padding: 3.5rem;
 
 .pageheading {
     position: relative;
-    background-image: url('../../static/img/mask.png');
-    background-repeat: no-repeat;
-    background-origin: content-box;
-    background-size: contain;
-    background-position: center;
+    padding: 0;
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -14,15 +10,32 @@ $surrounding-padding: 3.5rem;
     min-height: 100vh;
     max-height: 100vh;
     box-sizing: content-box;
-    align-content: center;
+    align-content: stretch;
+
 
     &__title {
         display: flex;
         flex-direction: column;
         position: relative;
         z-index: 1;
-        margin: auto $surrounding-padding;
+        margin: auto auto $half-gutter auto;
         align-items: center;
+        align-self: stretch;
+        flex: 1 1 auto;
+        justify-content: center;
+
+        @include mq(md, $direction: max){
+            background-image: url('../../static/img/mask.png');
+            background-repeat: no-repeat;
+            background-origin: content-box;
+            background-size: contain;
+            background-position: center;
+            
+        }
+
+        @include mq(md){
+            margin: auto $surrounding-padding;
+        }
 
         > * {
             display: flex;
@@ -75,6 +88,11 @@ $surrounding-padding: 3.5rem;
         }
 
         .banner {
+            display: none;
+
+            @include mq(md){
+                display: block;
+            }
             @include mq(lg) {
                 margin: 0 0 0 calculatevw(60px);
                 width: calculatevw(359px);
@@ -87,34 +105,64 @@ $surrounding-padding: 3.5rem;
     }
 
     &__inner {
-        margin: $surrounding-padding;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        margin: $one-third-gutter;
         position: relative;
+
+        @include mq(sm){
+            margin: $two-third-gutter;
+        }
+
+        @include mq(md){
+            margin: $surrounding-padding;
+            background-image: url('../../static/img/mask.png');
+            background-repeat: no-repeat;
+            background-origin: content-box;
+            background-size: contain;
+            background-position: top center;
+        }
     }
 
-    &__corner-banners {
-        position: absolute;
-        display: grid;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-
+    &__banners {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0 0 $half-gutter;
+        
         .banner {
-            position: absolute;
-
             &[data-count="1"],
-            &[data-count="3"] {
-                left: 0;
+            &[data-count="2"] {
+                @include mq(md, $direction: max){
+                    border: none;
+                    padding: 0;
+                }
+            }
+        }
+
+        &--bottom {
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+
+            @include mq(md){
+                align-items: flex-start;
+                justify-content: start;
             }
 
-            &[data-count="2"],
-            &[data-count="4"] {
-                right: 0;
-            }
+            .banner  {
+                &:first-child {
+                    display: inline-block;
+        
+                    @include mq(md) {
+                        display: none;
+                    }
+                }
 
-            &[data-count="3"],
-            &[data-count="4"] {
-                bottom: 0;
+                + .banner {
+                    margin: $half-gutter 0 0;
+                }
             }
         }
     }
