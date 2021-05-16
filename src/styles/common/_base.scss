@@ -14,7 +14,7 @@ body {
     font-size: rem(16px);
 
     @include mq(lg) {
-        font-size: calculateVw(16px);
+        font-size: calculatevw(16px);
     }
     @include mq(xxl) {
         font-size: rem(16px);
@@ -23,6 +23,7 @@ body {
 
 main {
     display: block;
+
     // display: flex;
     // flex-direction: column;
 }
@@ -38,7 +39,6 @@ img {
 .js-focus-visible :focus:not(.focus-visible) {
     outline: none;
 }
-
 
 .horizontal-line-spacer {
     display: inline-flex;

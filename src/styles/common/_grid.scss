@@ -63,7 +63,7 @@ $grid-layouts-config: (
             )
         )
     )
- )                                                                                                                                                                                   ;
+);
 
 @function grid-attribute($type: columns, $grid-layout-choice: 4) {
     $grid-columns: null;
@@ -159,11 +159,11 @@ $grid-layouts-config: (
 .row {
     display: flex;
     flex-wrap: wrap;
-    margin-left: -$grid-gutter-width/2;
-    margin-right: -$grid-gutter-width/2;
+    margin-left: -$grid-gutter-width / 2;
+    margin-right: -$grid-gutter-width / 2;
 
-    & > * {
-        padding: 0 $grid-gutter-width/2;
+    > * {
+        padding: 0 $grid-gutter-width / 2;
     }
 }
 

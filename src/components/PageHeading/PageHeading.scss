@@ -12,7 +12,6 @@ $surrounding-padding: 3.5rem;
     box-sizing: content-box;
     align-content: stretch;
 
-
     &__title {
         display: flex;
         flex-direction: column;
@@ -24,16 +23,15 @@ $surrounding-padding: 3.5rem;
         flex: 1 1 auto;
         justify-content: center;
 
-        @include mq(md, $direction: max){
+        @include mq(md, $direction: max) {
             background-image: url('../../static/img/mask.png');
             background-repeat: no-repeat;
             background-origin: content-box;
             background-size: contain;
             background-position: center;
-            
         }
 
-        @include mq(md){
+        @include mq(md) {
             margin: auto $surrounding-padding;
         }
 
@@ -63,17 +61,13 @@ $surrounding-padding: 3.5rem;
                 }
             }
 
-            &:nth-child(2){
-
-            }
-
             &:nth-child(3) {
                 margin-left: rem(140px);
 
-                @include mq(lg){
+                @include mq(lg) {
                     margin-left: calculatevw(140px);
                 }
-                @include mq(xxl){
+                @include mq(xxl) {
                     margin-left: rem(140px);
                 }
 
@@ -81,16 +75,12 @@ $surrounding-padding: 3.5rem;
                     margin-left: 2rem;
                 }
             }
-
-            &:nth-child(4){
-                
-            }
         }
 
         .banner {
             display: none;
 
-            @include mq(md){
+            @include mq(md) {
                 display: block;
             }
             @include mq(lg) {
@@ -111,11 +101,11 @@ $surrounding-padding: 3.5rem;
         margin: $one-third-gutter;
         position: relative;
 
-        @include mq(sm){
+        @include mq(sm) {
             margin: $two-third-gutter;
         }
 
-        @include mq(md){
+        @include mq(md) {
             margin: $surrounding-padding;
             background-image: url('../../static/img/mask.png');
             background-repeat: no-repeat;
@@ -130,11 +120,11 @@ $surrounding-padding: 3.5rem;
         flex-direction: row;
         justify-content: space-between;
         margin: 0 0 $half-gutter;
-        
+
         .banner {
             &[data-count="1"],
             &[data-count="2"] {
-                @include mq(md, $direction: max){
+                @include mq(md, $direction: max) {
                     border: none;
                     padding: 0;
                 }
@@ -146,15 +136,15 @@ $surrounding-padding: 3.5rem;
             flex-direction: column;
             align-items: center;
 
-            @include mq(md){
+            @include mq(md) {
                 align-items: flex-start;
                 justify-content: start;
             }
 
-            .banner  {
+            .banner {
                 &:first-child {
                     display: inline-block;
-        
+
                     @include mq(md) {
                         display: none;
                     }

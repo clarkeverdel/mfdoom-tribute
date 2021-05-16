@@ -74,10 +74,11 @@
         @include mq(lg) {
             width: calculatevw(181px);
         }
+
         @include mq(xxl) {
             width: rem(181px);
         }
-        
+
         svg {
             @include childImage;
         }

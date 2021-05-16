@@ -1,23 +1,23 @@
 $colors: (
     'black': (
-        default: #231F20,
+        default: #231f20,
         pitchblack: #000
     ),
     'white': (
-        default: #FAF8E1,
-        bright: #FFF
+        default: #faf8e1,
+        bright: #fff
     ),
     'grey': (
         darkest: #212121,
         darker: #333,
         dark: #4f4f4f,
         default: #828282,
-        light: #BDBDBD,
+        light: #bdbdbd,
         lighter: #e5e5e5,
         lightest: #fafafa
     ),
     'yellow': (
-        default: #FDCA00,
+        default: #fdca00,
         button: #ffc800
     ),
     'green': (
@@ -41,29 +41,29 @@ $color-opacity: (
 $color-key: 'default' !default;
 
 @function color(
-  $name: 'yellow',
-  $variant: $color-key,
-  $opacity: 1
+    $name: 'yellow',
+    $variant: $color-key,
+    $opacity: 1
 ) {
-  $color: null;
+    $color: null;
 
-  // Get the color spectrum
-  $color-spectrum: map-get($colors, "#{$name}");
+    // Get the color spectrum
+    $color-spectrum: map-get($colors, "#{$name}");
 
-  // Get the color variant
-  @if $color-spectrum {
-    $color: map-get($color-spectrum, $variant);
-  }
-  
-  // Get the alpha setting
-  $alpha: if(type-of($opacity) == 'number', $opacity, map-get($color-opacity, $opacity));
+    // Get the color variant
+    @if $color-spectrum {
+        $color: map-get($color-spectrum, $variant);
+    }
 
-  // Set the alpha of the color
-  @if $alpha {
-    $color: rgba($color, $alpha);
-  }
+    // Get the alpha setting
+    $alpha: if(type-of($opacity) == 'number', $opacity, map-get($color-opacity, $opacity));
 
-  @return $color;
+    // Set the alpha of the color
+    @if $alpha {
+        $color: rgba($color, $alpha);
+    }
+
+    @return $color;
 }
 
 .text {
@@ -71,9 +71,9 @@ $color-key: 'default' !default;
         $base-color-value: map-get($color-variants, 'default');
 
         &-#{$color-key} {
-          color: $base-color-value;
+            color: $base-color-value;
         }
-      }
+    }
 }
 
 $button-colors: (
@@ -108,12 +108,12 @@ $button-text-colors: (
 
 @each $color, $value in $colors {
     .text {
-        &--#{''+$color} {
+        &--#{'' + $color} {
             color: map-get($value, 'default');
         }
     }
 }
 
 .text--light {
-  color: color(white);
+    color: color(white);
 }

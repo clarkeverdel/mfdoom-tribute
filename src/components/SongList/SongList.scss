@@ -14,7 +14,7 @@
         font-size: rem(20px);
         display: flex;
         align-items: center;
-        @include font-stack-heading();
+        @include font-stack-heading;
 
         @include mq(lg) {
             font-size: calculatevw(20px);
@@ -23,14 +23,13 @@
             font-size: rem(20px);
         }
 
-
-        &:after {
+        &::after {
             content: "";
             width: $grid-gutter-width;
             height: 1px;
             background-color: color(white);
             display: inline-block;
-            margin: 0px rem(32px);
+            margin: 0 rem(32px);
         }
     }
 
@@ -40,6 +39,6 @@
     }
 
     &__artist {
-        @include text-xl();
+        @include text-xl;
     }
 }

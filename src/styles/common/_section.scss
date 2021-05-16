@@ -9,7 +9,6 @@
     @include mq(xxl) {
         padding: rem($grid-gutter-width * 4) 0;
     }
-    
 
     &.half-padding {
         padding: ($grid-gutter-width * 2) 0;
@@ -51,7 +50,7 @@
         }
 
         &__colon {
-            height: .85ch;
+            height: 0.85ch;
             width: auto;
             display: inline-block;
 

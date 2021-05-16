@@ -6,18 +6,19 @@
         position: relative;
         z-index: 1;
 
-        > *:nth-child(1){
+        > *:nth-child(1) {
             text-align: center;
             padding-left: 10vw;
         }
-        > *:nth-child(2){
+
+        > *:nth-child(2) {
             text-align: left;
         }
-        > *:nth-child(3){
+
+        > *:nth-child(3) {
             padding-left: 14vw;
         }
-        > *:nth-child(4){}
-        
+
         > *:nth-child(5) {
             text-align: center;
             padding-left: 10vw;
@@ -29,15 +30,15 @@
         display: flex;
         align-items: center;
 
-        &:before {
+        &::before {
             content: "";
             height: 1px;
             width: rem(60px);
             display: inline-flex;
-            background-color: #FFF;
+            background-color: color(white, bright);
             margin-right: rem(16px);
         }
-        
+
         > * {
             margin-right: rem(8px);
 
@@ -46,5 +47,4 @@
             }
         }
     }
-    
 }

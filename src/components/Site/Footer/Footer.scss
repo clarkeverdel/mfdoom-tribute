@@ -4,18 +4,18 @@
     &__top {
         display: flex;
         justify-content: flex-start;
-        padding: $grid-gutter-width/2 0;
+        padding: $grid-gutter-width / 2 0;
         flex-direction: column;
 
-        @include mq(md){
+        @include mq(md) {
             flex-direction: row;
         }
 
         @include mq(lg) {
-            padding: calculatevw($grid-gutter-width/2) 0;
+            padding: calculatevw($grid-gutter-width / 2) 0;
         }
         @include mq(xxl) {
-            padding: rem($grid-gutter-width/2) 0;
+            padding: rem($grid-gutter-width / 2) 0;
         }
 
         > * {
@@ -24,7 +24,7 @@
             &:nth-child(2) {
                 text-align: center;
 
-                @include mq(md){
+                @include mq(md) {
                     text-align: right;
                 }
             }
@@ -45,19 +45,19 @@
     }
 
     &__bottom {
-        padding: $grid-gutter-width/2 0;
+        padding: $grid-gutter-width / 2 0;
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-        
-        @include mq(md){
+
+        @include mq(md) {
             grid-template-columns: repeat(3, 1fr);
         }
 
         @include mq(lg) {
-            padding: calculatevw($grid-gutter-width/2) 0;
+            padding: calculatevw($grid-gutter-width / 2) 0;
         }
         @include mq(xxl) {
-            padding: rem($grid-gutter-width/2) 0;
+            padding: rem($grid-gutter-width / 2) 0;
         }
 
         > * {
@@ -71,7 +71,7 @@
             &:nth-child(3) {
                 justify-content: center;
 
-                @include mq(md){
+                @include mq(md) {
                     justify-content: flex-end;
                 }
             }
@@ -83,7 +83,7 @@
         margin: 0 rem(-12px);
         justify-content: center;
 
-        @include mq(md){
+        @include mq(md) {
             justify-content: flex-start;
         }
 
