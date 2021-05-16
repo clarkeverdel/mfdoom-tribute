@@ -10,11 +10,16 @@ import React, { useEffect, useRef, useState } from 'react'
 // let OBJLoader
 // let MTLLoader
 
+// Declare "dat.gui" object --> external script UMD module
+declare const dat: any
+
 const Mask = () => {
 
     const mount: any = useRef<HTMLDivElement | Function>(null!)
     const controls: any = useRef<HTMLDivElement>(null!)
     const [isAnimating, setAnimating] = useState(true)
+
+
 
     useEffect(() => {
         let width: number = mount.current.clientWidth
