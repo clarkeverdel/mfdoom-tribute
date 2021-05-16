@@ -8,7 +8,7 @@ import BubBlackLogo from '../../static/img/logo/bubblack.svg';
 
 // Components
 import Banner from '../Banner/Banner';
-import Mask from '../Mask/Mask'
+
 
 // Interface
 interface PageHeading { }

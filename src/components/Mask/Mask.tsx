@@ -14,14 +14,13 @@ const Mask = () => {
 
     const mount: any = useRef<HTMLDivElement | Function>(null!)
     const controls: any = useRef<HTMLDivElement>(null!)
-    const vrButton: any = useRef<HTMLDivElement>(null!)
     const [isAnimating, setAnimating] = useState(true)
 
     useEffect(() => {
         let width: number = mount.current.clientWidth
         let height: number = mount.current.clientHeight
         let frameId: number
-    
+
         const scene = new THREE.Scene()
         const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
         const renderer = new THREE.WebGLRenderer({ antialias: true })
@@ -40,7 +39,7 @@ const Mask = () => {
 
         const ambientLight = new THREE.AmbientLight( 0xcccccc, 0.4 );
         scene.add( ambientLight );
-        
+
 
         const pointLight = new THREE.PointLight( 0xffffff, 0.8 );
         camera.add( pointLight );
@@ -48,9 +47,9 @@ const Mask = () => {
         scene.add(camera)
 
         // GUI
-        const gui = (typeof window !== 'undefined' && dat) && new dat.GUI()
+        const gui: any = (typeof window !== 'undefined' && dat) && new dat.GUI()
 
-    
+
         camera.position.z = 2
         // scene.add(cube)
         renderer.setClearColor('#231f20')
@@ -117,11 +116,11 @@ const Mask = () => {
             freedomMeshFolder.open()
           }
         }
-    
+
         const renderScene = () => {
           renderer.render(scene, camera)
         }
-    
+
         const handleResize = ():void => {
           width = mount.current.clientWidth
           height = mount.current.clientHeight
@@ -130,7 +129,7 @@ const Mask = () => {
           camera.updateProjectionMatrix()
           renderScene()
         }
-        
+
         const animate = ():void  => {
             // if(freedomMesh){
             //     freedomMesh.rotation.x += 0.001
@@ -140,19 +139,19 @@ const Mask = () => {
           renderScene()
           frameId = window.requestAnimationFrame(animate)
         }
-    
+
         const start = (): void => {
           if (!frameId) {
             frameId = requestAnimationFrame(animate)
           }
           // showGUI()
         }
-    
+
         const stop = (): void => {
           cancelAnimationFrame(frameId)
           frameId = 0
         }
-    
+
         // Append to dom
         mount.current.appendChild(renderer.domElement)
         document.body.appendChild(VRButton.createButton(renderer))
@@ -162,26 +161,26 @@ const Mask = () => {
 
         window.addEventListener('resize', handleResize)
         start()
-    
+
         controls.current = { start, stop }
 
         // Animation loop for XR
         renderer.setAnimationLoop(() => {
             renderer.render( scene, camera );
         })
-        
+
         return () => {
           stop()
           window.removeEventListener('resize', handleResize)
           mount.current.removeChild(renderer.domElement)
           gui.destroy()
-    
+
           // scene.remove(freedomMesh)
           // geometry.dispose()
           material.dispose()
         }
     }, [])
-    
+
     useEffect(() => {
         if (isAnimating) {
           controls.current.start()
@@ -189,14 +188,14 @@ const Mask = () => {
           controls.current.stop()
         }
     }, [isAnimating])
-    
+
     return <>
-        <div ref={mount} onClick={() => setAnimating(!isAnimating)} style={{ 
+        <div ref={mount} onClick={() => setAnimating(!isAnimating)} style={{
           overflow: 'hidden',
-          position: 'fixed', 
-          left: 0, 
-          top: 0, 
-          bottom: 0, 
+          position: 'fixed',
+          left: 0,
+          top: 0,
+          bottom: 0,
           right: 0
         }} />
     </>

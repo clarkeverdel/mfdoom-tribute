@@ -34,7 +34,11 @@
     "strict": false,
     "noEmit": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "paths": {
+      "../node_modules/three/examples/jsm/libs/dat.gui.module": ["../node_modules/@types/dat.gui"]
+    },
+    "allowUmdGlobalAccess": true
   },
   "include": [
     "pages/**/*",
