@@ -59,7 +59,7 @@
 }
 
 @mixin text-l {
-    font-size: rem(22px);
+    font-size: rem(16px);
     line-height: 1.2;
 
     @include mq(lg) {

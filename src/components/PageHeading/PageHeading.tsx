@@ -29,7 +29,8 @@ const PageHeading = ({ }: PageHeading) => {
                 </Banner>
             </div>
 
-            <h1 className="pageheading__title">
+            <div className="pageheading__title">
+              <h1>
                 <div>
                     <span>The</span>
                     <span>super</span>
@@ -42,7 +43,8 @@ const PageHeading = ({ }: PageHeading) => {
                     </Banner>
                 </div>
                 <div>MF DOOM.</div>
-            </h1>
+              </h1>
+            </div>
 
             <div className="pageheading__banners pageheading__banners--bottom">
                 <Banner>
