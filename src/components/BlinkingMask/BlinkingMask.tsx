@@ -25,7 +25,13 @@ const BlinkingMask: FunctionComponent<BlinkingMask> = () => {
                     <FlareSvg />
                 </div>
                 <div className="blinking-mask__image">
-                    <img src="/static/img/mask_small.png" srcSet="/static/img/mask_small.png 1x, /static/img/mask_small@2x.png 2x" alt="MF Doom Mask." />
+                    <img
+                      src="/static/img/mask_small.png"
+                      srcSet="/static/img/mask_small.png 1x, /static/img/mask_small@2x.png 2x"
+                      alt="MF Doom Mask."
+                      width="72px"
+                      height="72px"
+                    />
                 </div>
             </div>
             <div className="blinking-mask__illustration"></div>

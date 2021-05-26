@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Images
-import BubBlackLogo from '../../static/img/logo/bubblack.svg';
+// import BubBlackLogo from '../../static/img/logo/bubblack.svg';
 
 // Resources
 
@@ -18,6 +18,11 @@ const PageHeading = ({ }: PageHeading) => {
     return <div className="pageheading">
 
         <div className="pageheading__inner">
+            <picture className="pageheading__background">
+              <source srcSet="/static/img/mask.webp" type="image/webp" />
+              <img src="/static/img/mask.png" />
+            </picture>
+
             {/* <Mask /> */}
             <div className="pageheading__banners">
                 <Banner type="circle" count={1}>
@@ -30,6 +35,10 @@ const PageHeading = ({ }: PageHeading) => {
             </div>
 
             <div className="pageheading__title">
+              <picture className="pageheading__background">
+                <source srcSet="/static/img/mask.webp" type="image/webp" />
+                <img src="/static/img/mask.png" />
+              </picture>
               <h1>
                 <div>
                     <span>The</span>
@@ -53,7 +62,8 @@ const PageHeading = ({ }: PageHeading) => {
                 </Banner>
 
                 <Banner type="circle" count={3}>
-                    <BubBlackLogo />
+                    {/* <BubBlackLogo /> */}
+                    <img src="/static/img/logo/bubblack.svg" />
                 </Banner>
             </div>
         </div>

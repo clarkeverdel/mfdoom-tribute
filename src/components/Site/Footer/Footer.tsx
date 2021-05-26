@@ -3,7 +3,7 @@ import Banner from '../../Banner/Banner'
 import Marquee from '../../Marquee/Marquee'
 
 // Resources
-import BubBlackLogo from '../../../static/img/logo/bubblack.svg'
+// import BubBlackLogo from '../../../static/img/logo/bubblack.svg'
 
 
 const Footer = () => {
@@ -20,7 +20,7 @@ const Footer = () => {
                         MF DOOM FOREVER
                     </div>
                 </div>
-                
+
                 <div className="footer__middle">
                     <Marquee>
                         <h2>A villain in your land, in his land a ruler.</h2>
@@ -31,7 +31,8 @@ const Footer = () => {
                     <div></div>
                     <div>
                         <Banner type="circle">
-                            <BubBlackLogo />
+                            {/* <BubBlackLogo /> */}
+                            <img src="/static/img/logo/bubblack.svg" />
                         </Banner>
                     </div>
                     <div className="">
@@ -39,7 +40,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-        </footer>    
+        </footer>
     )
 }
 

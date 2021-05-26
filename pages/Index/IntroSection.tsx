@@ -4,7 +4,6 @@ import React from 'react'
 import ContentBlock from '../../src/components/ContentBlock/ContentBlock'
 
 // Images
-import PsuedonymCircle from '../../src/static/img/psuedonym_circle.svg';
 
 const introImage = {
     src: '/static/img/photos/mfdoom_on_stage.jpg',
@@ -21,10 +20,10 @@ const IntroSection = () => {
             <div className="container fluid">
                 <ContentBlock image={introImage} className="section__content">
                     <div className={`copy--large`}>
-                        You probably already know everything about this genius. Yet, why not take another tour of the Multi Faced DOOM, the most enigmatic rapper ever... 
+                        You probably already know everything about this genius. Yet, why not take another tour of the Multi Faced DOOM, the most enigmatic rapper ever...
                         <br />Who’s your favorite DOOM alter ego?
                     </div>
-                    <PsuedonymCircle className={`section__circle`} />
+                    <img src="/static/img/psuedonym_circle.svg" className={`section__circle`} />
                 </ContentBlock>
             </div>
         </section>

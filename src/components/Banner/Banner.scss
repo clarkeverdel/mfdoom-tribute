@@ -21,6 +21,12 @@
         }
     }
 
+    img {
+        display: block;
+        width: 100%;
+        height: 30px;
+    }
+
     &[data-type="circle"] {
         display: flex;
         align-items: center;

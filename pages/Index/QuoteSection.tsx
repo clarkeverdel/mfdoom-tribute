@@ -2,8 +2,6 @@
 import BlockQuote from '../../src/components/BlockQuote/BlockQuote'
 import ContentBlock from '../../src/components/ContentBlock/ContentBlock'
 
-// Images
-import PsuedonymCircle from '../../src/static/img/quotes_circle.svg';
 
 const introImage = {
     src: '/static/img/photos/mfdoom_on_stage_2.jpg',
@@ -18,7 +16,7 @@ const QuoteSection = () => {
         <section className={`section section--quote`}>
             <div className="container fluid">
                 <ContentBlock image={introImage}>
-                    <PsuedonymCircle className={`section__circle`} />
+                    <img src="/static/img/quotes_circle.svg" className={`section__circle`} />
                 </ContentBlock>
                 <BlockQuote className={`section__blockquote`}/>
             </div>
