@@ -6,8 +6,8 @@
     "start_url": "/",
     "display": "standalone",
     "orientation": "portrait",
-    "background_color": "#ffffff",
-    "theme_color": "#ffffff",
+    "background_color": "#faf8e1",
+    "theme_color": "#faf8e1",
     "icons": [
         {
             "src": "\/static/img/favicons/android-icon-36x36.png",

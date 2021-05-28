@@ -4,7 +4,7 @@ export default {
     image: null,
     themeColor: '#231F20',
     locale: 'en',
-    author: 'Clarke Verdel & Martin Zuidema',
+    author: 'Clarke Verdel',
     twitterHandle: null,
     keywords: '',
     domain: ''

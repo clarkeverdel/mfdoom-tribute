@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Images
-// import BubBlackLogo from '../../static/img/logo/bubblack.svg';
+
 
 // Resources
 
@@ -63,7 +63,7 @@ const PageHeading = ({ }: PageHeading) => {
 
                 <Banner type="circle" count={3}>
                     {/* <BubBlackLogo /> */}
-                    <img src="/static/img/logo/bubblack.svg" />
+                    <img src="/static/img/logo/bubblack.svg" width="114" height="30" />
                 </Banner>
             </div>
         </div>

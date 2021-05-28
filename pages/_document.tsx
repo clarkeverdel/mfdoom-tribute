@@ -13,7 +13,7 @@ class Document extends NextDocument {
     render() {
         return <Html lang={meta.locale}>
             <Head>
-                <script src="https://unpkg.com/three@0.126.1/examples/js/libs/dat.gui.min.js" />
+
             </Head>
             <body>
                 <Main />

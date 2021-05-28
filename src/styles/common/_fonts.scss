@@ -8,7 +8,7 @@
 		url('/static/fonts/public-sans/PublicSans-Regular.woff') format('woff');
 	font-weight: $font-weight-light;
 	font-style: normal;
-	font-display: block;
+	font-display: swap;
 }
 
 @font-face {
@@ -20,7 +20,7 @@
 		url('/static/fonts/public-sans/PublicSans-Medium.woff') format('woff');
 	font-weight: $font-weight-regular;
 	font-style: normal;
-	font-display: block;
+	font-display: swap;
 }
 
 @font-face {
@@ -32,7 +32,7 @@
 		url('/static/fonts/public-sans/PublicSans-SemiBold.woff') format('woff');
 	font-weight: $font-weight-bold;
 	font-style: normal;
-	font-display: block;
+	font-display: swap;
 }
 
 // Ohno BlazeFace
@@ -44,7 +44,7 @@
 		url('/static/fonts/ohno-blazeface/OhnoBlazefaceDemo-14Point.otf');
 	font-weight: $font-weight-regular;
 	font-style: normal;
-	font-display: block;
+	font-display: swap;
 }
 
 @font-face {
@@ -55,5 +55,5 @@
 		url('/static/fonts/ohno-blazeface/OhnoBlazefaceDemo-24Point.otf');
 	font-weight: $font-weight-bold;
 	font-style: normal;
-	font-display: block;
+	font-display: swap;
 }

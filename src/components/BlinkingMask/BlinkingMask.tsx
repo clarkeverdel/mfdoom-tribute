@@ -15,7 +15,7 @@ const BlinkingMask: FunctionComponent<BlinkingMask> = () => {
                     <img src="/static/img/beams_large.svg" />
                 </div>
                 <div className="blinking-mask__beam blinking-mask__beams--small">
-                <img src="/static/img/beams_small.svg" />
+                  <img src="/static/img/beams_small.svg" />
                 </div>
                 <div className="blinking-mask__flare">
                     <img src="/static/img/flare.svg" />

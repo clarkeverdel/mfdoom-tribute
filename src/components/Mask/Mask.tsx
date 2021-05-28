@@ -203,6 +203,7 @@ const Mask = () => {
           bottom: 0,
           right: 0
         }} />
+        <script src="https://unpkg.com/three@0.126.1/examples/js/libs/dat.gui.min.js" />
     </>
 }
 
