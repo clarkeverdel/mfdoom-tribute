@@ -9,7 +9,6 @@ import { Song } from '../types'
 import { songs } from '../src/data/index'
 
 // Resources
-import ColonSvg from '../src/static/img/colon.svg'
 
 // Page Sections
 import AllCaps from './Index/AllCaps';
@@ -39,7 +38,7 @@ const Home: React.FC<IProps> = ({songs}) => {
         <section className="section half-padding">
             <div className="container grid-1">
                 <div className="col-1">
-                    <h2>Listen <ColonSvg className="section__title__colon"/></h2>
+                    <h2>Listen <img src="/static/img/colon.svg" className="section__title__colon"/></h2>
                     <SongList songs={songs} />
                 </div>
             </div>
@@ -53,7 +52,7 @@ const Home: React.FC<IProps> = ({songs}) => {
 
 export const getStaticProps: GetStaticProps = async() => {
     return {
-        props: { 
+        props: {
             songs
         }
     }

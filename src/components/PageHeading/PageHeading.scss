@@ -11,11 +11,6 @@ $surrounding-padding: 3.5rem;
     align-content: stretch;
     min-height: 100vh;
 
-    @include mq(md) {
-        height: 100vh;
-        max-height: 100vh;
-    }
-
     &__background {
         position: absolute;
         left: 0;
@@ -52,30 +47,17 @@ $surrounding-padding: 3.5rem;
             align-self: center;
         }
 
+        @include mq(md) {
+            padding: 0;
+            margin: 0;
+        }
+
         #{$parent}__background {
             display: initial;
 
             @include mq(md) {
                 display: none;
             }
-        }
-
-        @include mq(md, $direction: max) {
-            // @supports not (background-image: url('../../static/img/mask.webp')){
-            //     background-image: url('../../static/img/mask.png');
-            // }
-            // @supports (background-image: url('../../static/img/mask.webp')){
-            //     background-image: -webkit-image-set(url('../../static/img/mask.webp') 1x, url('../../static/img/mask.webp') 2x) /* etc */;
-            // }
-
-            // background-repeat: no-repeat;
-            // background-size: contain;
-            // background-position: center;
-        }
-
-        @include mq(md) {
-            padding: 0;
-            margin: 0;
         }
 
         > h1 {
@@ -172,13 +154,6 @@ $surrounding-padding: 3.5rem;
 
         @include mq(md) {
             margin: $surrounding-padding;
-
-            //     background-image: url('../../static/img/mask.png');
-            //     background-image: -webkit-image-set(url('../../static/img/mask.webp') 1x, url('../../static/img/mask.webp') 2x) /* etc */;
-            //     background-repeat: no-repeat;
-            //     background-origin: content-box;
-            //     background-size: contain;
-            //     background-position: center;
         }
     }
 
