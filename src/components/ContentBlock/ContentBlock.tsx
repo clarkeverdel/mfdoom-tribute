@@ -1,12 +1,12 @@
-import Image from 'next/image'
-import React, { FunctionComponent } from 'react'
+import Image from 'next/image';
+import React, { FunctionComponent } from 'react';
 
 type ContentBlock = {
     className?: string
     layout?: string
     image: any // todo
     [x:string]: any
-}
+};
 
 const ContentBlock: FunctionComponent<ContentBlock>  = ({ className, image, children } ) => {
     const { src, alt, width, height, position } = image
@@ -25,7 +25,7 @@ const ContentBlock: FunctionComponent<ContentBlock>  = ({ className, image, chil
                 { children }
             </div>
         </div>
-    )
+    );
 }
 
 export default ContentBlock

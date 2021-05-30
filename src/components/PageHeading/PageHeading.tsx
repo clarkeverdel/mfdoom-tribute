@@ -1,5 +1,6 @@
 // Libs
 import React from 'react';
+import Image from 'next/image';
 
 // Images
 
@@ -18,10 +19,12 @@ const PageHeading = ({ }: PageHeading) => {
     return <div className="pageheading">
 
         <div className="pageheading__inner">
-            <picture className="pageheading__background">
-              <source srcSet="/static/img/mask.webp" type="image/webp" />
-              <img src="/static/img/mask.png" />
-            </picture>
+            <div className="pageheading__background">
+              <Image
+                src="/static/img/mask.png"
+                layout="fill"
+              />
+            </div>
 
             {/* <Mask /> */}
             <div className="pageheading__banners">
@@ -36,7 +39,7 @@ const PageHeading = ({ }: PageHeading) => {
 
             <div className="pageheading__title">
               <picture className="pageheading__background">
-                <source srcSet="/static/img/mask.webp" type="image/webp" />
+                <source srcSet="/static/img/mask.png" type="image/webp" />
                 <img src="/static/img/mask.png" />
               </picture>
               <h1>

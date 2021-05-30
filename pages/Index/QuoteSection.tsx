@@ -1,10 +1,13 @@
+// Libs
+import Image from 'next/image'
+
 // Components
 import BlockQuote from '../../src/components/BlockQuote/BlockQuote'
 import ContentBlock from '../../src/components/ContentBlock/ContentBlock'
 
 
 const introImage = {
-    src: '/static/img/photos/mfdoom_on_stage_2.jpg',
+    src: '/static/img/photos/mfdoom_on_stage_2.png',
     alt: 'MF DOOM performing on stage.',
     width: 665,
     height: 1000,
@@ -16,7 +19,9 @@ const QuoteSection = () => {
         <section className={`section section--quote`}>
             <div className="container fluid">
                 <ContentBlock image={introImage}>
-                    <img src="/static/img/quotes_circle.svg" className={`section__circle`} />
+                    <div className={`section__circle`}>
+                      <Image src="/static/img/quotes_circle.svg" width={586} height={586} />
+                    </div>
                 </ContentBlock>
                 <BlockQuote className={`section__blockquote`}/>
             </div>

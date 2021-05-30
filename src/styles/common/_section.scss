@@ -50,15 +50,17 @@
         }
 
         &__colon {
-            height: 0.85ch;
-            width: auto;
-            display: inline-block;
+            img {
+                height: 0.85ch;
+                width: auto;
+                display: inline-block;
 
-            @include mq(lg) {
-                height: calculatevw(85px);
-            }
-            @include mq(xxl) {
-                height: rem(85px);
+                @include mq(lg) {
+                    height: calculatevw(85px);
+                }
+                @include mq(xxl) {
+                    height: rem(85px);
+                }
             }
         }
     }

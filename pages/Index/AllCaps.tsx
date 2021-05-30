@@ -1,3 +1,6 @@
+// Libs
+import Image from 'next/image'
+
 // Resources
 import Styles from './AllCaps.module.scss'
 
@@ -8,8 +11,14 @@ const AllCaps = () => {
     return (
         <section className={`section ${Styles.section}`}>
             <div className={`section__inner ${Styles.section}`}>
-                <img src="/static/img/all_caps.svg" className="section__title--tilted" />
-                <BlinkingMask />
+              <div className="section__title--tilted">
+                <Image
+                  src="/static/img/all_caps.svg"
+                  width={135}
+                  height={1040}
+                />
+              </div>
+              <BlinkingMask />
             </div>
         </section>
     )
