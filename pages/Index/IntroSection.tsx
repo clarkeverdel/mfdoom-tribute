@@ -7,7 +7,7 @@ import ContentBlock from '../../src/components/ContentBlock/ContentBlock'
 // Images
 
 const introImage = {
-    src: '/static/img/photos/mfdoom_on_stage.png',
+    src: '/static/img/photos/mfdoom_on_stage.jpg',
     alt: 'MF DOOM performing on stage.',
     width: 560,
     height: 840,
