@@ -23,6 +23,7 @@ const PageHeading = ({ }: PageHeading) => {
               <Image
                 src="/static/img/mask.png"
                 layout="fill"
+                priority={true}
               />
             </div>
 
@@ -38,10 +39,14 @@ const PageHeading = ({ }: PageHeading) => {
             </div>
 
             <div className="pageheading__title">
-              <picture className="pageheading__background">
-                <source srcSet="/static/img/mask.png" type="image/webp" />
-                <img src="/static/img/mask.png" />
-              </picture>
+              <div className="pageheading__background">
+                <Image
+                  src="/static/img/mask.png"
+                  layout="fill"
+                  priority={true}
+                />
+              </div>
+
               <h1>
                 <div>
                     <span>The</span>
@@ -66,7 +71,7 @@ const PageHeading = ({ }: PageHeading) => {
 
                 <Banner type="circle" count={3}>
                     {/* <BubBlackLogo /> */}
-                    <img src="/static/img/logo/bubblack.svg" width="114" height="30" />
+                    <Image src="/static/img/logo/bubblack.svg" width={114} height={30} priority={true}/>
                 </Banner>
             </div>
         </div>
