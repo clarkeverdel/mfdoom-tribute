@@ -17,7 +17,7 @@ const ContentBlock: FunctionComponent<ContentBlock>  = ({ className, image, chil
         <div className={position ? `${className} contentblock--image-${position}` : className}>
             {src && (
                 <div className={`contentblock__image`}>
-                    <Image src={src} alt={alt} width={width} height={height} layout='intrinsic' priority={true} />
+                    <Image src={src} alt={alt} width={width} height={height} layout='intrinsic' />
                 </div>
             )}
 
