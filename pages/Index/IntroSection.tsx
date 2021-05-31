@@ -15,17 +15,22 @@ const introImage = {
     layout: 'intrinsic'
 }
 
+const introImageDecoration = {
+  src: '/static/img/psuedonym_circle.svg',
+  alt: 'Psuedonyms',
+  width: 531,
+  height: 531,
+  layout: 'intrinsic'
+}
+
 const IntroSection = () => {
     return (
         <section className={`section section--intro`}>
             <div className="container fluid">
-                <ContentBlock image={introImage} className="section__content">
+                <ContentBlock image={introImage} imageDecoration={introImageDecoration} className="section__content">
                     <div className={`copy--large`}>
                         You probably already know everything about this genius. Yet, why not take another tour of the Multi Faced DOOM, the most enigmatic rapper ever...
                         <br />Who’s your favorite DOOM alter ego?
-                    </div>
-                    <div className={`section__circle`}>
-                      <Image src="/static/img/psuedonym_circle.svg" width={531} height={531} />
                     </div>
                 </ContentBlock>
             </div>

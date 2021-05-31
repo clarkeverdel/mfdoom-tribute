@@ -23,8 +23,30 @@
             }
         }
 
-        #{$parent}__content {
-            max-width: 75%;
+        .contentblock {
+            &__content {
+                @include mq(lg) {
+                    max-width: 75%;
+                }
+            }
+
+            &__image {
+                flex-direction: column;
+
+                @include mq(md) {
+                    flex-direction: row;
+                }
+
+                &__decoration {
+                    transform: translate(0, -15%);
+
+                    @include mq(md) {
+                        position: absolute;
+                        bottom: 0;
+                        transform: translate(-86%, 50%);
+                    }
+                }
+            }
         }
     }
 }
