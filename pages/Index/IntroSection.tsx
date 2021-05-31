@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 
 // Components
 import ContentBlock from '../../src/components/ContentBlock/ContentBlock'
