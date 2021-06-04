@@ -8,6 +8,11 @@
         @include font-stack-heading;
         top: 50%;
         transform: translate(-100%, -50%);
+        width: 7px;
+
+        @include mq(md) {
+            width: 17px;
+        }
 
         &--1 {
             left: -8.9%;
@@ -31,6 +36,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            width: rem(174px);
+            height: rem(174px);
 
             @include mq(lg) {
                 width: calculatevw(435px);
@@ -47,7 +54,8 @@
         }
 
         &--large {
-            height: auto;
+            width: rem(254px);
+            height: rem(254px);
 
             @include mq(lg) {
                 width: calculatevw(635px);
@@ -70,6 +78,7 @@
         top: 50%;
         transform: translate(-50%, -50%);
         height: auto;
+        width: rem(72px);
 
         @include mq(lg) {
             width: calculatevw(181px);

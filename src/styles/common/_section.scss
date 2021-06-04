@@ -36,7 +36,7 @@
             display: block;
             height: auto;
             transform: translateY(-50%);
-            width: calculatevw(130px);
+            width: rem(65px);
 
             @include mq(lg) {
                 left: calculatevw(-5px);

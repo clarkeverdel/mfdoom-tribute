@@ -39,6 +39,8 @@
 
                 &__decoration {
                     transform: translate(0, -15%);
+                    width: 265px;
+                    height: 265px;
 
                     @include mq(md) {
                         position: absolute;
