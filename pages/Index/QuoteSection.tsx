@@ -1,5 +1,4 @@
 // Libs
-import Image from 'next/image'
 
 // Components
 import BlockQuote from '../../src/components/BlockQuote/BlockQuote'
