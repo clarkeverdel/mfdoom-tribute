@@ -48,7 +48,11 @@
 }
 
 @mixin text-xl {
-    font-size: rem(30px);
+    font-size: rem(12px);
+
+    @include mq(sm) {
+        font-size: calculatevw(30px);
+    }
 
     @include mq(lg) {
         font-size: calculatevw(30px);

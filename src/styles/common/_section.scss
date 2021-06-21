@@ -1,7 +1,11 @@
 .section {
     position: relative;
-    min-height: 100vh;
+    min-height: 50vh;
     padding: $grid-gutter-width 0;
+
+    @include mq(md) {
+        min-height: 100vh;
+    }
 
     @include mq(lg) {
         padding: calculatevw($grid-gutter-width * 3) 0;

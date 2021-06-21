@@ -5,24 +5,6 @@
     &--intro {
         position: relative;
 
-        #{$parent}__circle {
-            z-index: 2;
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translate(-75%, 0);
-
-            @include mq(lg) {
-                width: calculatevw(531px);
-                height: calculatevw(531px);
-            }
-
-            @include mq(xxl) {
-                width: rem(531px);
-                height: rem(531px);
-            }
-        }
-
         .contentblock {
             &__content {
                 @include mq(lg) {
@@ -39,13 +21,20 @@
 
                 &__decoration {
                     transform: translate(0, -15%);
-                    width: 265px;
-                    height: 265px;
+                    width: rem(265px);
+                    height: rem(265px);
 
                     @include mq(md) {
                         position: absolute;
                         bottom: 0;
                         transform: translate(-86%, 50%);
+                        width: calculatevw(531px);
+                        height: calculatevw(531px);
+                    }
+
+                    @include mq(xxl) {
+                        width: rem(531px);
+                        height: rem(531px);
                     }
                 }
             }

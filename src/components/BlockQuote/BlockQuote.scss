@@ -33,10 +33,20 @@
         &::before {
             content: "";
             height: 1px;
-            width: rem(60px);
+            width: rem(16px);
             display: inline-flex;
             background-color: color(white, bright);
-            margin-right: rem(16px);
+            margin-right: rem(8px);
+
+            @include mq(sm) {
+                width: calculatevw(60px);
+                margin-right: calculatevw(16px);
+            }
+
+            @include mq(xl) {
+                width: rem(60px);
+                margin-right: rem(16px);
+            }
         }
 
         > * {

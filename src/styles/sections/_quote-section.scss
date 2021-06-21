@@ -1,25 +1,54 @@
-.section--quote {
-    // padding: calc(var(--grid-gutter-width) * 4) 0 0
+.section {
+    $parent: &;
 
-    .section__circle {
-        z-index: 2;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translate(-40%, 0);
+    &--quote {
+        position: relative;
 
-        @include mq(lg) {
-            width: calculatevw(586px);
-            height: calculatevw(568px);
+        @include mq(md, $direction: max) {
+            padding-top: rem(293px);
         }
-        @include mq(xxl) {
-            width: rem(586px);
-            height: rem(568px);
-        }
-    }
 
-    .section__blockquote {
-        z-index: 2;
-        margin-top: -8%;
+        .section__blockquote {
+            z-index: 2;
+            margin-top: -15%;
+
+            @include mq(md) {
+                margin-top: -8%;
+            }
+        }
+
+        .contentblock {
+            &__image {
+                &__decoration {
+                    z-index: 2;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    transform: translate(0%, -80%);
+                    width: rem(293px);
+                    height: rem(293px);
+
+                    @include mq(sm) {
+                        width: calculatevw(293px);
+                        height: calculatevw(293px);
+                    }
+
+                    @include mq(md) {
+                        top: 0;
+                        right: 0;
+                        transform: translate(50%, -40%);
+                    }
+
+                    @include mq(lg) {
+                        width: calculatevw(586px);
+                        height: calculatevw(568px);
+                    }
+                    @include mq(xxl) {
+                        width: rem(586px);
+                        height: rem(568px);
+                    }
+                }
+            }
+        }
     }
 }

@@ -6,7 +6,7 @@ import BlockQuote from '../../src/components/BlockQuote/BlockQuote'
 import ContentBlock from '../../src/components/ContentBlock/ContentBlock'
 
 
-const introImage = {
+const image = {
     src: '/static/img/photos/mfdoom_on_stage_2.jpg',
     alt: 'MF DOOM performing on stage.',
     width: 665,
@@ -14,15 +14,19 @@ const introImage = {
     layout: 'intrinsic'
 }
 
+const imageDecoration = {
+  src: '/static/img/quotes_circle.svg',
+  alt: 'MF Doom Quotes',
+  width: 586,
+  height: 586,
+  layout: 'intrinsic'
+}
+
 const QuoteSection = () => {
     return (
         <section className={`section section--quote`}>
             <div className="container fluid">
-                <ContentBlock image={introImage}>
-                    <div className={`section__circle`}>
-                      <Image src="/static/img/quotes_circle.svg" width={586} height={586} />
-                    </div>
-                </ContentBlock>
+                <ContentBlock image={image} imageDecoration={imageDecoration} className="section__content"></ContentBlock>
                 <BlockQuote className={`section__blockquote`}/>
             </div>
         </section>
