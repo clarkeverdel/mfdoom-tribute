@@ -36,7 +36,7 @@ const Home: React.FC<IProps> = ({songs}) => {
         <section className="section flex flex-justify-center no-padding flex-align-center ">
             <BlinkingMask />
         </section>
-        <section className="section half-padding">
+        <section className="section">
             <div className="container grid-1">
                 <div className="col-1">
                     <h2>Listen <span className="section__title__colon"><Image src="/static/img/colon.svg" width={38} height={85} /></span></h2>
@@ -44,7 +44,7 @@ const Home: React.FC<IProps> = ({songs}) => {
                 </div>
             </div>
         </section>
-        <section className="section flex flex-justify-center flex-align-center no-padding">
+        <section className="section flex flex-justify-center flex-align-center">
             <BlinkingMask />
         </section>
         <Footer />

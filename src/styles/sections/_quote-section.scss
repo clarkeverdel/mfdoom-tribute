@@ -28,21 +28,14 @@
                     width: rem(293px);
                     height: rem(293px);
 
-                    @include mq(sm) {
-                        width: calculatevw(293px);
-                        height: calculatevw(293px);
-                    }
-
                     @include mq(md) {
                         top: 0;
                         right: 0;
                         transform: translate(50%, -40%);
-                    }
-
-                    @include mq(lg) {
                         width: calculatevw(586px);
                         height: calculatevw(568px);
                     }
+
                     @include mq(xxl) {
                         width: rem(586px);
                         height: rem(568px);

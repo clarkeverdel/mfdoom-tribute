@@ -39,7 +39,7 @@
             width: rem(174px);
             height: rem(174px);
 
-            @include mq(lg) {
+            @include mq(md) {
                 width: calculatevw(435px);
                 height: calculatevw(435px);
             }
@@ -57,7 +57,7 @@
             width: rem(254px);
             height: rem(254px);
 
-            @include mq(lg) {
+            @include mq(md) {
                 width: calculatevw(635px);
                 height: calculatevw(635px);
             }
@@ -80,7 +80,7 @@
         height: auto;
         width: rem(72px);
 
-        @include mq(lg) {
+        @include mq(md) {
             width: calculatevw(181px);
         }
 

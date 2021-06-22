@@ -3,11 +3,19 @@
     margin: 0;
 
     &__item {
-        padding: rem(60px) 0;
+        padding: rem(20px) 0;
         border-top: 1px solid color(white);
         border-bottom: 1px solid color(white);
         display: flex;
         align-items: center;
+
+        @include mq(md) {
+            padding: calculatevw(60px) 0;
+        }
+
+        @include mq(xl) {
+            padding: rem(60px) 0;
+        }
     }
 
     &__id {
@@ -16,7 +24,7 @@
         align-items: center;
         @include font-stack-heading;
 
-        @include mq(lg) {
+        @include mq(md) {
             font-size: calculatevw(20px);
         }
         @include mq(xxl) {
@@ -25,17 +33,35 @@
 
         &::after {
             content: "";
-            width: $grid-gutter-width;
+            width: $half-gutter;
             height: 1px;
             background-color: color(white);
             display: inline-block;
-            margin: 0 rem(32px);
+            margin: 0 1rem;
+
+            @include mq(md) {
+                width: calculatevw($grid-gutter-width);
+                margin: 0 calculatevw(32px);
+            }
+
+            @include mq(xl) {
+                width: $grid-gutter-width;
+                margin: 0 2rem;
+            }
         }
     }
 
     &__title {
-        margin: 0 $grid-gutter-width 0 0;
+        margin: 0 $one-third-gutter 0 0;
         padding: 0;
+
+        @include mq(md) {
+            margin: 0 calculatevw($grid-gutter-width) 0 0;
+        }
+
+        @include mq(xl) {
+            margin: 0 $grid-gutter-width 0 0;
+        }
     }
 
     &__artist {

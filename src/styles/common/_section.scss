@@ -14,14 +14,14 @@
         padding: rem($grid-gutter-width * 3) 0;
     }
 
-    &.half-padding {
-        padding: ($grid-gutter-width * 2) 0;
+    &.small-padding {
+        padding: ($grid-gutter-width) 0;
 
-        @include mq(lg) {
-            padding: calculatevw($grid-gutter-width * 2) 0;
+        @include mq(md) {
+            padding: calculatevw($grid-gutter-width) 0;
         }
-        @include mq(xxl) {
-            padding: rem($grid-gutter-width * 2) 0;
+        @include mq(xl) {
+            padding: rem($grid-gutter-width) 0;
         }
     }
 
