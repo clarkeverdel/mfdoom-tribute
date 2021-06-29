@@ -26,7 +26,7 @@ const SiteMeta = ({ title, description, image, themeColor, locale, author, twitt
     return <Head>
         <meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />
         <meta httpEquiv='content-language' content={locale} />
-        <meta name='viewport' id='viewporttag' content='width=device-width, user-scalable=no, initial-scale=1' />
+        <meta name='viewport' id='viewporttag' content='width=device-width, initial-scale=1' />
 
         <link rel='apple-touch-icon' sizes='57x57' href='/static/img/favicons/apple-icon-57x57.png' />
         <link rel='apple-touch-icon' sizes='60x60' href='/static/img/favicons/apple-icon-60x60.png' />
