@@ -35,7 +35,7 @@ const Footer = () => {
                             <img src="/static/img/logo/bubblack.svg" />
                         </Banner>
                     </div>
-                    <div className="">
+                    <div className="footer__copyright">
                         <span>Photography: @Kmeron</span>
                     </div>
                 </div>

@@ -1,16 +1,17 @@
 .footer {
     position: relative;
+    overflow: hidden;
 
     &__top {
         display: flex;
         justify-content: flex-start;
-        padding: $grid-gutter-width / 2 0;
+        padding: $half-gutter 0 $half-gutter;
         flex-direction: column;
+        @include text-s;
 
         @include mq(md) {
             flex-direction: row;
         }
-
         @include mq(lg) {
             padding: calculatevw($grid-gutter-width / 2) 0;
         }
@@ -32,9 +33,13 @@
     }
 
     &__middle {
-        padding: $grid-gutter-width 0;
+        padding: $half-gutter 0;
         border-top: 1px solid color(white);
         border-bottom: 1px solid color(white);
+
+        @include mq(sm) {
+            padding: calculatevw($grid-gutter-width) 0;
+        }
 
         @include mq(lg) {
             padding: calculatevw($grid-gutter-width) 0;
@@ -45,14 +50,15 @@
     }
 
     &__bottom {
-        padding: $grid-gutter-width / 2 0;
+        padding: 0 0 $half-gutter;
         display: grid;
         grid-template-columns: repeat(1, 1fr);
+        grid-row-gap: $half-gutter;
 
         @include mq(md) {
+            padding: $half-gutter 0 $half-gutter;
             grid-template-columns: repeat(3, 1fr);
         }
-
         @include mq(lg) {
             padding: calculatevw($grid-gutter-width / 2) 0;
         }
@@ -86,7 +92,6 @@
         @include mq(md) {
             justify-content: flex-start;
         }
-
         @include mq(lg) {
             margin: 0 calculatevw(-12px);
         }
@@ -95,9 +100,12 @@
         }
 
         > * {
-            padding: 0 rem(12px);
+            padding: 0 rem(6px);
             display: flex;
 
+            @include mq(sm) {
+                padding: 0 rem(12px);
+            }
             @include mq(lg) {
                 padding: 0 calculatevw(12px);
             }
@@ -105,5 +113,9 @@
                 padding: 0 rem(12px);
             }
         }
+    }
+
+    &__copyright {
+        @include text-xs;
     }
 }

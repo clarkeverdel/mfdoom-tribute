@@ -23,9 +23,6 @@ body {
 
 main {
     display: block;
-
-    // display: flex;
-    // flex-direction: column;
 }
 
 img {
@@ -42,8 +39,18 @@ img {
 
 .horizontal-line-spacer {
     display: inline-flex;
-    width: rem(60px);
+    width: rem(20px);
     height: rem(1px);
     background-color: color(white);
     align-self: center;
+
+    @include mq(sm) {
+        width: rem(60px);
+    }
+    @include mq(md) {
+        width: calculatevw(60px);
+    }
+    @include mq(xxl) {
+        width: rem(60px);
+    }
 }
