@@ -1,5 +1,7 @@
 // Libs
-import React from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 // Utils
 import meta from '../meta.config.js';
@@ -21,11 +23,51 @@ interface IProps {
 const App = ({ Component, pageProps }: IProps) => {
     useServiceWorker();
 
+    const scrollContainer = useRef<HTMLDivElement>(null);
+
+    useLayoutEffect(() => {
+
+      if (typeof window !== "undefined") {
+        gsap.registerPlugin(ScrollTrigger);
+      }
+
+      if (scrollContainer.current && scrollContainer.current.clientHeight) {
+        var height = scrollContainer.current.clientHeight;
+
+        document.body.style.height = height + "px";
+
+        gsap.to(scrollContainer.current, {
+          y: -(height - document.documentElement.clientHeight),
+          scrollTrigger: {
+            trigger: document.body,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 1
+          }
+        });
+      }
+    })
+
     return <>
         <SiteMeta {...meta} />
 
-        <main>
-            <Component {...pageProps} />
+        <main style={{
+          overflow: 'hidden',
+          position: 'fixed',
+          height: '100%',
+          width: '100%',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0
+        }}>
+            <div id="scroll-container" ref={scrollContainer} style={{
+                position: 'absolute',
+                overflow: 'hidden',
+                width: '100%'
+              }}>
+              <Component {...pageProps} />
+            </div>
         </main>
     </>
 };

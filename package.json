@@ -59,6 +59,7 @@
     "not op_mini all"
   ],
   "dependencies": {
+    "gsap": "npm:@gsap/shockingly@^3.7.0",
     "next": "^10.0.7",
     "next-transpile-modules": "^6.4.0",
     "react": "^17.0.1",
