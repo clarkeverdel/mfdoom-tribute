@@ -1,5 +1,5 @@
 // Libs
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
@@ -25,8 +25,7 @@ const App = ({ Component, pageProps }: IProps) => {
 
     const scrollContainer = useRef<HTMLDivElement>(null);
 
-    useLayoutEffect(() => {
-
+    useEffect(() => {
       if (typeof window !== "undefined") {
         gsap.registerPlugin(ScrollTrigger);
       }
