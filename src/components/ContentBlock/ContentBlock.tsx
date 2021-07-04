@@ -18,12 +18,12 @@ const ContentBlock: FunctionComponent<ContentBlock>  = ({ className, image, imag
             {src && (
                 <div className={`contentblock__image`}>
                     <div>
-                      <Image src={src} alt={alt} width={width} height={height} />
+                      <Image src={src} alt={alt} width={width} height={height} placeholder="blur" />
                     </div>
 
                     {imageDecoration && (
                       <div className="contentblock__image__decoration">
-                        <Image src={imageDecoration.src} alt={imageDecoration.alt} width={imageDecoration.width} height={imageDecoration.height} />
+                        <Image src={imageDecoration.src} alt={imageDecoration.alt} width={imageDecoration.width} height={imageDecoration.height} placeholder="blur" />
                       </div>
                     )}
                 </div>
