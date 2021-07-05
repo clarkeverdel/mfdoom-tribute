@@ -3,15 +3,16 @@ import React from 'react'
 // Components
 import ContentBlock from '../../src/components/ContentBlock/ContentBlock'
 
-// Images
+// images
+import photo from '../../public/static/img/photos/mfdoom_on_stage.jpg';
 
 const introImage = {
-    src: '/static/img/photos/mfdoom_on_stage.jpg',
+    src: photo,
     alt: 'MF DOOM performing on stage.',
     width: 560,
     height: 840,
     position: 'right',
-    layout: 'intrinsic'
+    placeholder: 'blur'
 }
 
 const introImageDecoration = {

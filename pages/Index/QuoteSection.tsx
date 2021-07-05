@@ -5,12 +5,16 @@ import BlockQuote from '../../src/components/BlockQuote/BlockQuote'
 import ContentBlock from '../../src/components/ContentBlock/ContentBlock'
 
 
+// images
+import photo from '../../public/static/img/photos/mfdoom_on_stage_2.jpg';
+
 const image = {
-    src: '/static/img/photos/mfdoom_on_stage_2.jpg',
+    src: photo,
     alt: 'MF DOOM performing on stage.',
     width: 665,
     height: 1000,
-    layout: 'intrinsic'
+    layout: 'intrinsic',
+    placeholder: 'blur'
 }
 
 const imageDecoration = {

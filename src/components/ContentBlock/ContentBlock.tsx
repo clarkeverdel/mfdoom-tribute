@@ -9,7 +9,7 @@ type ContentBlock = {
 };
 
 const ContentBlock: FunctionComponent<ContentBlock>  = ({ className, image, imageDecoration, children } ) => {
-    const { src, alt, width, height, position } = image
+    const { src, alt, width, height, position, placeholder, blurDataURL } = image
 
     className = `contentblock ${className}`
 
@@ -18,12 +18,12 @@ const ContentBlock: FunctionComponent<ContentBlock>  = ({ className, image, imag
             {src && (
                 <div className={`contentblock__image`}>
                     <div>
-                      <Image src={src} alt={alt} width={width} height={height} placeholder="blur" />
+                      <Image src={src} alt={alt} width={width} height={height} placeholder={placeholder} blurDataURL={blurDataURL} />
                     </div>
 
                     {imageDecoration && (
                       <div className="contentblock__image__decoration">
-                        <Image src={imageDecoration.src} alt={imageDecoration.alt} width={imageDecoration.width} height={imageDecoration.height} placeholder="blur" />
+                        <Image src={imageDecoration.src} alt={imageDecoration.alt} width={imageDecoration.width} height={imageDecoration.height} placeholder={imageDecoration.placeholder} blurDataURL={imageDecoration.blurDataURL} />
                       </div>
                     )}
                 </div>

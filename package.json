@@ -59,8 +59,8 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "next": "^10.0.7",
-    "next-transpile-modules": "^6.4.0",
+    "next": "^11.0.1",
+    "next-transpile-modules": "^8.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "sass": "^1.32.8",
@@ -115,7 +115,7 @@
     "svg-react-loader": "^0.4.6",
     "ts-jest": "^25.4.0",
     "ts-loader": "^7.0.1",
-    "typescript": "^3.8.3",
+    "typescript": "^4.3.5",
     "webpack": "^4.43.0"
   },
   "main": "index.js"
