@@ -1,43 +1,41 @@
-import { useEffect, useRef, useState } from "react"
-import useInterval from '../../static/js/utils/hooks/useInterval'
+import { useCallback, useEffect, useRef, useState } from "react";
+import useInterval from '../../static/js/utils/hooks/useInterval';
 
-interface Marquee {
+interface IMarquee {
     children: React.ReactNode
 }
 
-const Marquee = ( { children }: Marquee ) => {
+const Marquee = ( { children }: IMarquee ) => {
 
-    const containerRef = useRef<HTMLDivElement>(null!)
-    const trackRef = useRef<HTMLDivElement>(null!)
+    const containerRef = useRef<HTMLDivElement>(null!);
+    // const trackRef = useRef<HTMLDivElement>(null!);
 
-    const animationDuration = 5000
-    const [trackStyle, setTrackStyle] = useState('translate3d(0, 0, 0)')
-    const [scrollDirection, setScrollDirection] = useState('right')
-    const [initialized, setInitialized] = useState(false)
+    const animationDuration = 5000;
+    const [trackStyle, setTrackStyle] = useState('translate3d(0, 0, 0)');
+    const [scrollDirection, setScrollDirection] = useState('right');
+    const [track, setTrack] = useState<HTMLDivElement | Boolean>(false);
 
     const animate = () => {
-        const container = containerRef.current
-        const track = trackRef.current
+        const container = containerRef.current;
+        const containerWidth = container?.offsetWidth;
+        const trackWidth = track?.offsetWidth;
+        const moveWidth = trackWidth - containerWidth;
 
-        const containerWidth = container?.offsetWidth
-        const trackWidth = track?.offsetWidth
-        const moveWidth = trackWidth - containerWidth
+        if(scrollDirection === 'left') setScrollDirection('right');
+        else if(scrollDirection === 'right') setScrollDirection('left');
 
-        if(scrollDirection === 'left') setScrollDirection('right')
-        else if(scrollDirection === 'right') setScrollDirection('left')
+        const currentTrackPosition = scrollDirection === 'left' ? -moveWidth : 0;
+        setTrackStyle(`translate3d(${currentTrackPosition}px, 0, 0)`);
+    };
 
-        const currentTrackPosition = scrollDirection === 'left' ? -moveWidth : 0
-        setTrackStyle(`translate3d(${currentTrackPosition}px, 0, 0)`)
-    }
+    const trackRef = useCallback((trackNode) => {
+      setTrack(trackNode);
+      animate()
+    }, []);
 
     useInterval(() => {
-        if(initialized) animate()
-    }, animationDuration)
-
-    useEffect(() => {
-        setInitialized(true)
-        animate()
-    }, [trackRef])
+      if(track) animate();
+    }, animationDuration);
 
     return (
         <div className="marquee" ref={containerRef}>
@@ -45,7 +43,7 @@ const Marquee = ( { children }: Marquee ) => {
                 { children }
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Marquee
+export default Marquee;
