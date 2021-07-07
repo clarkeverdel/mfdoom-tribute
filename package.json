@@ -37,11 +37,12 @@
     "test:watch": "jest --config config/tests/jest.config.js --watch --verbose",
     "test:coverage": "jest --config config/tests/jest.config.js --coverage --verbose",
     "eslint": "eslint --fix",
+    "lint": "next lint",
     "stylelint": "stylelint **/*.scss --syntax=scss",
     "start": "node server.js 0.0.0.0"
   },
   "lint-staged": {
-    "*.js": "yarn eslint",
+    "*.js": "yarn lint",
     "*.scss": "yarn stylelint"
   },
   "husky": {
@@ -94,7 +95,8 @@
     "css-loader": "^3.5.2",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
-    "eslint": "^6.8.0",
+    "eslint": "^7.30.0",
+    "eslint-config-next": "^11.0.1",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-react": "^7.19.0",
     "husky": "^4.2.5",
