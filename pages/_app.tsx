@@ -45,7 +45,7 @@ const App = ({ Component, pageProps }: IProps) => {
           }
         });
       }
-    })
+    });
 
     return <>
         <SiteMeta {...meta} />
