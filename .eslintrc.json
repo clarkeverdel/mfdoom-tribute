@@ -2,6 +2,22 @@
     "extends": [
         "next"
     ],
+    "env": {
+        "amd": true,
+        "browser": true,
+        "es6": true,
+        "mocha": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "globals": {
+        "window": true,
+        "document": true
+    },
     "rules": {
         "import/namespace": [
             2,
