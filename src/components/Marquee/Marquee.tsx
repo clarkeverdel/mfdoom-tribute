@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import useInterval from '../../static/js/utils/hooks/useInterval';
 
 interface IMarquee {
