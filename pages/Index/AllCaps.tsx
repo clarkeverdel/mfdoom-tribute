@@ -1,11 +1,12 @@
 // Libs
-import Image from 'next/image'
+import React from 'react';
+import Image from 'next/image';
 
 // Resources
-import Styles from './AllCaps.module.scss'
+import Styles from './AllCaps.module.scss';
 
 // Components
-import BlinkingMask from '../../src/components/BlinkingMask/BlinkingMask'
+import BlinkingMask from '../../src/components/BlinkingMask/BlinkingMask';
 
 const AllCaps = () => {
     return (
@@ -16,12 +17,13 @@ const AllCaps = () => {
                   src="/static/img/all_caps.svg"
                   width={135}
                   height={1040}
+                  alt="All Caps"
                 />
               </div>
               <BlinkingMask />
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default AllCaps
+export default AllCaps;

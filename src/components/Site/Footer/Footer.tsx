@@ -1,6 +1,10 @@
+// Libraries
+import React from 'react';
+import Image from 'next/image';
+
 // Components
-import Banner from '../../Banner/Banner'
-import Marquee from '../../Marquee/Marquee'
+import Banner from '../../Banner/Banner';
+import Marquee from '../../Marquee/Marquee';
 
 // Resources
 // import BubBlackLogo from '../../../static/img/logo/bubblack.svg'
@@ -32,7 +36,7 @@ const Footer = () => {
                     <div>
                         <Banner type="circle">
                             {/* <BubBlackLogo /> */}
-                            <img src="/static/img/logo/bubblack.svg" />
+                            <Image width={95} height={34} src="/static/img/logo/bubblack.svg" alt="Logo" />
                         </Banner>
                     </div>
                     <div className="footer__copyright">
@@ -41,7 +45,7 @@ const Footer = () => {
                 </div>
             </div>
         </footer>
-    )
-}
+    );
+};
 
-export default Footer
+export default Footer;

@@ -20,7 +20,7 @@ class Document extends NextDocument {
                 <NextScript />
             </body>
 
-        </Html>
+        </Html>;
     }
 }
 

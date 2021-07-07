@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 // Components
-import ContentBlock from '../../src/components/ContentBlock/ContentBlock'
+import ContentBlock from '../../src/components/ContentBlock/ContentBlock';
 
 // images
 import photo from '../../public/static/img/photos/mfdoom_on_stage.jpg';
@@ -13,7 +13,7 @@ const introImage = {
     height: 840,
     position: 'right',
     placeholder: 'blur'
-}
+};
 
 const introImageDecoration = {
   src: '/static/img/psuedonym_circle.svg',
@@ -21,7 +21,7 @@ const introImageDecoration = {
   width: 531,
   height: 531,
   layout: 'intrinsic'
-}
+};
 
 const IntroSection = () => {
     return (
@@ -35,7 +35,7 @@ const IntroSection = () => {
                 </ContentBlock>
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default IntroSection
+export default IntroSection;

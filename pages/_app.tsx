@@ -27,7 +27,7 @@ const App = ({ Component, pageProps }: IProps) => {
         <main>
             <Component {...pageProps} />
         </main>
-    </>
+    </>;
 };
 
 // Props

@@ -1,8 +1,9 @@
 // Libs
+import React from 'react';
 
 // Components
-import BlockQuote from '../../src/components/BlockQuote/BlockQuote'
-import ContentBlock from '../../src/components/ContentBlock/ContentBlock'
+import BlockQuote from '../../src/components/BlockQuote/BlockQuote';
+import ContentBlock from '../../src/components/ContentBlock/ContentBlock';
 
 
 // images
@@ -15,7 +16,7 @@ const image = {
     height: 1000,
     layout: 'intrinsic',
     placeholder: 'blur'
-}
+};
 
 const imageDecoration = {
   src: '/static/img/quotes_circle.svg',
@@ -23,7 +24,7 @@ const imageDecoration = {
   width: 586,
   height: 586,
   layout: 'intrinsic'
-}
+};
 
 const QuoteSection = () => {
     return (
@@ -33,7 +34,7 @@ const QuoteSection = () => {
                 <BlockQuote className={`section__blockquote`}/>
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default QuoteSection
+export default QuoteSection;

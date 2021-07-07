@@ -4,7 +4,6 @@ import Image from 'next/image';
 
 // Images
 
-
 // Resources
 
 // Components
@@ -12,10 +11,10 @@ import Banner from '../Banner/Banner';
 
 
 // Interface
-interface PageHeading { }
+interface IPageHeading {}
 
 
-const PageHeading = ({ }: PageHeading) => {
+const PageHeading = ({}: IPageHeading) => {
     return <div className="pageheading">
 
         <div className="pageheading__inner">
@@ -24,6 +23,7 @@ const PageHeading = ({ }: PageHeading) => {
                 src="/static/img/mask.png"
                 layout="fill"
                 priority={true}
+                alt="Mask"
               />
             </div>
 
@@ -44,6 +44,7 @@ const PageHeading = ({ }: PageHeading) => {
                   src="/static/img/mask.png"
                   layout="fill"
                   priority={true}
+                  alt="Mask"
                 />
               </div>
 
@@ -71,13 +72,11 @@ const PageHeading = ({ }: PageHeading) => {
 
                 <Banner type="circle" count={3}>
                     {/* <BubBlackLogo /> */}
-                    <Image src="/static/img/logo/bubblack.svg" width={114} height={30} priority={true}/>
+                    <Image src="/static/img/logo/bubblack.svg" width={114} height={30} priority={true} alt="Logo" />
                 </Banner>
             </div>
         </div>
-    </div>
+    </div>;
 };
-
-PageHeading.defaultProps = {};
 
 export default PageHeading;

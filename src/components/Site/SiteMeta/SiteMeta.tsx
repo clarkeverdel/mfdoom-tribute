@@ -68,7 +68,7 @@ const SiteMeta = ({ title, description, image, themeColor, locale, author, twitt
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         {image && <meta name="twitter:image" content={`${domain}${image}`} />}
-    </Head>
+    </Head>;
 };
 
 // Props
