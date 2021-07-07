@@ -13,12 +13,14 @@ const Marquee = ( { children }: IMarquee ) => {
     const animationDuration = 5000;
     const [trackStyle, setTrackStyle] = useState('translate3d(0, 0, 0)');
     const [scrollDirection, setScrollDirection] = useState('right');
-    const [track, setTrack] = useState<HTMLDivElement | Boolean>(false);
+    const [track, setTrack] = useState<HTMLDivElement | undefined>(undefined);
 
     const animate = () => {
+        if(!track) return;
+
         const container = containerRef.current;
         const containerWidth = container?.offsetWidth;
-        const trackWidth = track?.offsetWidth;
+        const trackWidth = track.offsetWidth;
         const moveWidth = trackWidth - containerWidth;
 
         if(scrollDirection === 'left') setScrollDirection('right');
@@ -30,7 +32,6 @@ const Marquee = ( { children }: IMarquee ) => {
 
     const trackRef = useCallback((trackNode) => {
       setTrack(trackNode);
-      animate()
     }, []);
 
     useInterval(() => {
