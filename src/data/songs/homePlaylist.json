@@ -3,35 +3,35 @@
         "id": 1,
         "title": "Peachfuzz",
         "artist": "KMD",
-        "image": null,
+        "image": "/static/img/albums/peachfuzz.jpg",
         "audio": null
     },
     {
         "id": 2,
         "title": "Hey!",
         "artist": "MF DOOM",
-        "image": null,
+        "image": "/static/img/albums/hey.jpeg",
         "audio": null
     },
     {
         "id": 3,
         "title": "Rae Dawn",
         "artist": "Viktor Vaughn",
-        "image": null,
+        "image": "/static/img/albums/raedawn.jpg",
         "audio": null
     },
     {
         "id": 4,
         "title": "Anti Matter",
         "artist": "King Geedorah",
-        "image": null,
+        "image": "/static/img/albums/kinggeedorah.jpg",
         "audio": null
     },
     {
         "id": 5,
         "title": "Great Day",
         "artist": "Mad Villain",
-        "image": null,
+        "image": "/static/img/albums/madvillain.png",
         "audio": null
     }
 ]

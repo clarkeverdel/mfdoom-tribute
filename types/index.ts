@@ -5,3 +5,8 @@ export interface Song {
     image: string
     audio: string
 }
+
+export interface Album {
+  id: number,
+  image: string
+}
