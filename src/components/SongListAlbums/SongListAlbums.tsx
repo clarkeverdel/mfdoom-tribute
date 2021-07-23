@@ -80,7 +80,7 @@ const SongList: React.FC<ISongListAlbums> = ({ albums, active, mouseX, mouseY })
 
     return (
         <>
-            <svg ref={ distortRef } className="distort" width="350" height="450" viewBox="0 0 350 450">
+            <svg ref={ distortRef } className="distort" width="500" height="500" viewBox="0 0 500 500">
               <filter id="distortionFilter">
                 {/* <feTurbulence type="turbulence" baseFrequency="0.07 0.01" numOctaves="5" seed="2" stitchTiles="stitch" x="0%" y="0%" width="100%" height="100%" result="noise"/>
                 <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="B" x="0%" y="0%" width="100%" height="100%" filterUnits="userSpaceOnUse"/> */}
@@ -88,9 +88,9 @@ const SongList: React.FC<ISongListAlbums> = ({ albums, active, mouseX, mouseY })
 						  <feDisplacementMap ref={ displacementMapRef }  in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="B" x="0%" y="0%" width="100%" height="100%" filterUnits="userSpaceOnUse"/>
               </filter>
               <g filter="url(#distortionFilter)">
-                { albums.map(({id, image}) => {
+                { albums.map(({id, image, width, height}) => {
                   return <image
-                      className={`distort__img ${id === active ? "distort__img--active" : "" }`} x="50" y="50" xlinkHref={image} height="350" width="350" key={ id }
+                      className={`distort__img ${id === active ? "distort__img--active" : "" }`} x="50" y="50" xlinkHref={image} height={height} width={width} key={ id }
                     />;
                 })}
               </g>

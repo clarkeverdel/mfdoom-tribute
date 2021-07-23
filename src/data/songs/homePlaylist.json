@@ -3,35 +3,55 @@
         "id": 1,
         "title": "Peachfuzz",
         "artist": "KMD",
-        "image": "/static/img/albums/peachfuzz.jpg",
+        "album": {
+          "image": "/static/img/albums/peachfuzz.jpg",
+          "width": 1000,
+          "height": 1000
+        },
         "audio": null
     },
     {
         "id": 2,
         "title": "Hey!",
         "artist": "MF DOOM",
-        "image": "/static/img/albums/hey.jpeg",
+        "album": {
+          "image": "/static/img/albums/hey.jpeg",
+          "width": 1000,
+          "height": 1000
+        },
         "audio": null
     },
     {
         "id": 3,
         "title": "Rae Dawn",
         "artist": "Viktor Vaughn",
-        "image": "/static/img/albums/raedawn.jpg",
+        "album": {
+          "image": "/static/img/albums/raedawn.jpg",
+          "width": 1000,
+          "height": 1000
+        },
         "audio": null
     },
     {
         "id": 4,
         "title": "Anti Matter",
         "artist": "King Geedorah",
-        "image": "/static/img/albums/kinggeedorah.jpg",
+        "album": {
+          "image": "/static/img/albums/kinggeedorah.jpg",
+          "width": 925,
+          "height": 914
+        },
         "audio": null
     },
     {
         "id": 5,
         "title": "Great Day",
         "artist": "Mad Villain",
-        "image": "/static/img/albums/madvillain.png",
+        "album": {
+          "image": "/static/img/albums/madvillain.png",
+          "width": 1000,
+          "height": 1000
+        },
         "audio": null
     }
 ]

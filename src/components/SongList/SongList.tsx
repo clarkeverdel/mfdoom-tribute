@@ -24,14 +24,14 @@ const SongList: React.FC<ISongList> = ({ songs }) => {
                 />;
     });
 
-    const images = songs.map(song => ({ image: song.image, id: song.id }) );
+    const albums = songs.map(({id, album}) => ({ ...album, id }));
 
     return (
         <div className="songlist">
             <ul>
                 { listItems }
             </ul>
-            <SongListAlbums albums={ images } active={activeSong} mouseX={ mouseX } mouseY={ mouseY } />
+            <SongListAlbums albums={ albums } active={activeSong} mouseX={ mouseX } mouseY={ mouseY } />
         </div>
     );
 };

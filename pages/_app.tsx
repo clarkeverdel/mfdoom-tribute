@@ -1,7 +1,8 @@
 // Libs
-import React, { useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef, useState, SetStateAction } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import debounce from 'lodash.debounce';
 
 // Utils
 import meta from '../meta.config.js';
@@ -21,30 +22,55 @@ interface IProps {
 
 // Component
 const App = ({ Component, pageProps }: IProps) => {
+    const [height, setHeight] = useState<SetStateAction<number>>(0);
     useServiceWorker();
 
     const scrollContainer = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
+      const anim = gsap.to(scrollContainer.current, {
+        y: -(Number(height) - document.documentElement.clientHeight)
+      });
+
       if (typeof window !== "undefined") {
         gsap.registerPlugin(ScrollTrigger);
       }
 
       if (scrollContainer.current && scrollContainer.current.clientHeight) {
-        var height = scrollContainer.current.clientHeight;
-
+        setHeight(scrollContainer.current.clientHeight);
         document.body.style.height = height + "px";
-
-        gsap.to(scrollContainer.current, {
-          y: -(height - document.documentElement.clientHeight),
-          scrollTrigger: {
-            trigger: document.body,
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 1
-          }
-        });
       }
+
+      const ST = ScrollTrigger.create({
+        trigger: document.body,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1,
+        animation: anim
+      });
+
+      function updateSize() {
+          if (scrollContainer.current && scrollContainer.current.clientHeight) {
+            setHeight(scrollContainer.current.clientHeight);
+          }
+      }
+      let progress: number;
+      ScrollTrigger.addEventListener("refreshInit", () => {
+        progress = ST.progress;
+      });
+      ScrollTrigger.addEventListener("refresh", () => ST.scroll(progress * ScrollTrigger.maxScroll(window)));
+
+      window.addEventListener('resize', debounce(() => updateSize(), 250));
+
+      return () => {
+        ST.kill();
+
+        window.removeEventListener('resize', updateSize);
+        ScrollTrigger.removeEventListener("refreshInit", () => {
+          progress = ST.progress;
+        });
+        ScrollTrigger.removeEventListener("refresh", () => ST.scroll(progress * ScrollTrigger.maxScroll(window)));
+      };
     });
 
     return <>
