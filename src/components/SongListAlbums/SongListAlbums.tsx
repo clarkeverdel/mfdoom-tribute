@@ -14,6 +14,7 @@ const SongList: React.FC<ISongListAlbums> = ({ albums, active, mouseX, mouseY })
     // Album Animation
     const distortRef = useRef<SVGSVGElement>(null!);
     const displacementMapRef = useRef<SVGFEDisplacementMapElement>(null!);
+    const blurFilterRef = useRef<SVGFEGaussianBlurElement>(null!);
 
     useEffect(() => {
       const halfX: number = window.innerWidth / 2;
@@ -81,13 +82,18 @@ const SongList: React.FC<ISongListAlbums> = ({ albums, active, mouseX, mouseY })
     return (
         <>
             <svg ref={ distortRef } className="distort" width="500" height="500" viewBox="0 0 1000 1000">
-              <filter id="distortionFilter">
+              <filter id="filter">
                 {/* <feTurbulence type="turbulence" baseFrequency="0.07 0.01" numOctaves="5" seed="2" stitchTiles="stitch" x="0%" y="0%" width="100%" height="100%" result="noise"/>
                 <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="B" x="0%" y="0%" width="100%" height="100%" filterUnits="userSpaceOnUse"/> */}
-                <feTurbulence type="fractalNoise" baseFrequency="0.01 0.003" numOctaves="5" seed="2" stitchTiles="noStitch" x="0%" y="0%" width="100%" height="100%" result="noise"/>
-						  <feDisplacementMap ref={ displacementMapRef }  in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="B" x="0%" y="0%" width="100%" height="100%" filterUnits="userSpaceOnUse"/>
+                <feTurbulence type="fractalNoise" baseFrequency="0.01 0.005" numOctaves="5" seed="6" stitchTiles="noStitch" x="0%" y="0%" width="100%" height="100%" result="noise"/>
+						    <feDisplacementMap ref={ displacementMapRef }  in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="B" x="0%" y="0%" width="100%" height="100%" filterUnits="userSpaceOnUse" result="distortion"/>
+                <feGaussianBlur ref={ blurFilterRef } in="distortion" in2="SourceGraphic" stdDeviation="5" result="blur" />
+                <feMerge>
+                  <feMergeNode in="distortion"/>
+                  <feMergeNode in="blur"/>
+                </feMerge>
               </filter>
-              <g filter="url(#distortionFilter)">
+              <g filter="url(#filter)">
                 { albums.map(({id, image, width, height}) => {
                   return <image
                       className={`distort__img ${id === active ? "distort__img--active" : "" }`} xlinkHref={image} height={height} width={width} key={ id }
