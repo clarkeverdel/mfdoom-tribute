@@ -71,7 +71,7 @@ const App = ({ Component, pageProps }: IProps) => {
         });
         ScrollTrigger.removeEventListener("refresh", () => ST.scroll(progress * ScrollTrigger.maxScroll(window)));
       };
-    });
+    }, [height]);
 
     return <>
         <SiteMeta {...meta} />

@@ -20,8 +20,9 @@ const Mask = () => {
     const [isAnimating, setAnimating] = useState(true);
 
     useEffect(() => {
-        let width: number = mount.current.clientWidth;
-        let height: number = mount.current.clientHeight;
+        let currentMount = mount.current;
+        let width: number = currentMount.clientWidth;
+        let height: number = currentMount.clientHeight;
         let frameId: number;
 
         const scene = new THREE.Scene();
@@ -181,6 +182,7 @@ const Mask = () => {
           // scene.remove(freedomMesh)
           // geometry.dispose()
           material.dispose();
+          currentMount = null;
         };
     }, []);
 

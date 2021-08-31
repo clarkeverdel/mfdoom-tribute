@@ -14,7 +14,7 @@ const SongList: React.FC<ISongListAlbums> = ({ albums, active, mouseX, mouseY })
     // Album Animation
     const distortRef = useRef<SVGSVGElement>(null!);
     const displacementMapRef = useRef<SVGFEDisplacementMapElement>(null!);
-    const blurFilterRef = useRef<SVGFEGaussianBlurElement>(null!);
+    // const blurFilterRef = useRef<SVGFEGaussianBlurElement>(null!);
 
     useEffect(() => {
       const halfX: number = window.innerWidth / 2;
@@ -87,7 +87,7 @@ const SongList: React.FC<ISongListAlbums> = ({ albums, active, mouseX, mouseY })
                 <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="B" x="0%" y="0%" width="100%" height="100%" filterUnits="userSpaceOnUse"/> */}
                 <feTurbulence type="fractalNoise" baseFrequency="0.01 0.005" numOctaves="5" seed="6" stitchTiles="noStitch" x="0%" y="0%" width="100%" height="100%" result="noise"/>
 						    <feDisplacementMap ref={ displacementMapRef }  in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="B" x="0%" y="0%" width="100%" height="100%" filterUnits="userSpaceOnUse" result="distortion"/>
-                {/* <feGaussianBlur ref={ blurFilterRef } in="distortion" in2="SourceGraphic" stdDeviation="5" result="blur" /> */}
+                <feGaussianBlur in="distortion" in2="SourceGraphic" stdDeviation="5" result="blur" />
                 <feMerge>
                   <feMergeNode in="distortion"/>
                   <feMergeNode in="blur"/>
