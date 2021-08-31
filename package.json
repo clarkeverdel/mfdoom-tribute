@@ -57,7 +57,7 @@
   ],
   "dependencies": {
     "@gsap/shockingly": "^3.7.1",
-    "gsap": "npm:@gsap/shockingly@^3.7.1",
+    "gsap": "npm:@gsap/shockingly",
     "lodash.debounce": "^4.0.8",
     "next": "^11.1.2",
     "next-transpile-modules": "^8.0.0",
