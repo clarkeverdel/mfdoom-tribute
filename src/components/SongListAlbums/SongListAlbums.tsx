@@ -14,7 +14,7 @@ const SongList: React.FC<ISongListAlbums> = ({ albums, active, mouseX, mouseY })
     // Album Animation
     const distortRef = useRef<SVGSVGElement>(null!);
     const displacementMapRef = useRef<SVGFEDisplacementMapElement>(null!);
-    // const blurFilterRef = useRef<SVGFEGaussianBlurElement>(null!);
+    const gaussianBlurRef = useRef<SVGFEGaussianBlurElement>(null!);
 
     useEffect(() => {
       const halfX: number = window.innerWidth / 2;
@@ -60,6 +60,7 @@ const SongList: React.FC<ISongListAlbums> = ({ albums, active, mouseX, mouseY })
         const dmScale = Math.min(lineEq(50, 0, 140, 0, mouseDist), 60);
 
         displacementMapRef.current.scale.baseVal = dmScale;
+
         requestAnimationFrame(() => render());
       };
 
@@ -76,6 +77,18 @@ const SongList: React.FC<ISongListAlbums> = ({ albums, active, mouseX, mouseY })
           x: `${mouseX - halfX}px`,
           duration: 0.5
         });
+
+        gsap.fromTo(gaussianBlurRef.current, {
+          attr: {
+            stdDeviation: 3
+          }
+        },
+        {
+          attr: {
+            stdDeviation: 0
+          },
+          duration: .5
+        })
       }
     }, [mouseX, mouseY, active]);
 
@@ -83,11 +96,9 @@ const SongList: React.FC<ISongListAlbums> = ({ albums, active, mouseX, mouseY })
         <>
             <svg ref={ distortRef } className="distort" width="500" height="500" viewBox="0 0 1000 1000">
               <filter id="filter">
-                {/* <feTurbulence type="turbulence" baseFrequency="0.07 0.01" numOctaves="5" seed="2" stitchTiles="stitch" x="0%" y="0%" width="100%" height="100%" result="noise"/>
-                <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="B" x="0%" y="0%" width="100%" height="100%" filterUnits="userSpaceOnUse"/> */}
                 <feTurbulence type="fractalNoise" baseFrequency="0.01 0.005" numOctaves="5" seed="6" stitchTiles="noStitch" x="0%" y="0%" width="100%" height="100%" result="noise"/>
 						    <feDisplacementMap ref={ displacementMapRef }  in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="B" x="0%" y="0%" width="100%" height="100%" filterUnits="userSpaceOnUse" result="distortion"/>
-                <feGaussianBlur in="distortion" in2="SourceGraphic" stdDeviation="5" result="blur" />
+                <feGaussianBlur ref={ gaussianBlurRef } in="distortion" in2="SourceGraphic" result="blur" />
                 <feMerge>
                   <feMergeNode in="distortion"/>
                   <feMergeNode in="blur"/>
