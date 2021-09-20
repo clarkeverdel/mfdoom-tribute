@@ -88,7 +88,7 @@ const SongList: React.FC<ISongListAlbums> = ({ albums, active, mouseX, mouseY })
             stdDeviation: 0
           },
           duration: .5
-        })
+        });
       }
     }, [mouseX, mouseY, active]);
 
