@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import debounce from 'lodash.debounce';
 
 
-export const SmoothScroll = ({ children }) => {
+export const SmoothScroll: React.FC = ({ children }) => {
   const scrollContainer = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState<SetStateAction<number>>(0);
 

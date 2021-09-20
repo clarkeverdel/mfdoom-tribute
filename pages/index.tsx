@@ -1,5 +1,5 @@
 // Libs
-import React, { useContext } from 'react';
+import React from 'react';
 import { GetStaticProps } from 'next';
 import Image from 'next/image';
 
