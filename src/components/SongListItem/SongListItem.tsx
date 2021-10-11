@@ -1,5 +1,6 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useCallback } from "react";
 import { Song } from '../../../types';
+import throttle from 'lodash.throttle';
 
 interface ISong extends Song{
     active?: number | boolean,
@@ -16,9 +17,13 @@ const formatNumber = (id: number) => {
 const SongListItem = ({ id, title, artist, active, setActive, setMouseX, setMouseY }: ISong) => {
 
   const onItemMove = (e: React.MouseEvent) => {
+    setMousePositions(e);
+  };
+
+  const setMousePositions = useCallback(throttle((e: React.MouseEvent) => {
     setMouseX(e.clientX);
     setMouseY(e.clientY);
-  };
+  }, 10), []);
 
     return (
         <li className={`songlist__item ${active ? "songlist__item--active" : ""}`} onMouseOver={ () => setActive(id) } onMouseMove={(e) => onItemMove(e)} onMouseLeave={ () => setActive(false) }>

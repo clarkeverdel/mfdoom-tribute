@@ -6,8 +6,12 @@
     &__phrase {
         position: absolute;
         @include font-stack-heading;
-        top: 50%;
-        transform: translate(-100%, -50%);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        height: 104px;
         width: 7px;
 
         @include mq(md) {
@@ -15,12 +19,11 @@
         }
 
         &--1 {
-            left: -8.9%;
+            animation: rotatePhraseLeft 25s linear infinite;
         }
 
         &--2 {
-            right: -8.9%;
-            transform: translate(100%, -50%) scaleX(-1);
+            animation: rotatePhraseRight 25s linear infinite;
         }
     }
 
@@ -38,6 +41,7 @@
             transform: translate(-50%, -50%);
             width: rem(174px);
             height: rem(174px);
+            animation: rotateClockWise 35s linear infinite;
 
             @include mq(md) {
                 width: calculatevw(435px);
@@ -56,6 +60,7 @@
         &--large {
             width: rem(254px);
             height: rem(254px);
+            animation: rotateCounterClockWise 50s linear infinite;
 
             @include mq(md) {
                 width: calculatevw(635px);
@@ -79,6 +84,7 @@
         transform: translate(-50%, -50%);
         height: auto;
         width: rem(72px);
+        animation: flashFlare 2s  infinite;
 
         @include mq(md) {
             width: calculatevw(181px);
@@ -105,5 +111,79 @@
         > img {
             @include childImage;
         }
+    }
+}
+
+@keyframes rotateClockWise {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) ;
+    }
+    100% {
+        transform:  translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes rotateCounterClockWise {
+    0% {
+        transform: rotate(0deg) ;
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes flashFlare {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    4% {
+        transform: translate(-50%, -50%) scale(.97);
+    }
+    8% {
+        transform: translate(-50%, -50%) scale(.99);
+    }
+    12% {
+        transform: translate(-50%, -50%) scale(1.03);
+    }
+    18% {
+        transform: translate(-50%, -50%) scale(.97);
+    }
+    33% {
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+    41% {
+        transform: translate(-50%, -50%) scale(1.06);
+    }
+    52% {
+        transform: translate(-50%, -50%) scale(.95);
+    }
+    66% {
+        transform: translate(-50%, -50%) scale(1.15);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+
+@keyframes rotatePhraseLeft {
+    0% {
+        transform: rotate(0deg) translateX(calc(-307px + -52px));
+        // transform-origin: center center
+    }
+    100% {
+        transform: rotate(360deg) translateX(calc(-307px + -52px));
+
+    }
+}
+
+@keyframes rotatePhraseRight {
+    0% {
+        transform: rotate(0deg) translateX(calc(307px + 52px)) rotate(180deg);
+        // transform-origin: center center
+    }
+    100% {
+        transform: rotate(360deg) translateX(calc(307px + 52px)) rotate(180deg);
+
     }
 }

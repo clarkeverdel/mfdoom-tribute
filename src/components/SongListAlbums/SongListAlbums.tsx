@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, SetStateAction } from 'react';
 import { gsap } from 'gsap';
 import { Album } from '../../../types';
+import throttle from 'lodash.debounce';
 
 interface ISongListAlbums {
     albums: Album[],
@@ -25,10 +26,10 @@ const SongList: React.FC<ISongListAlbums> = ({ albums, active, mouseX, mouseY })
         y: halfY
       };
 
-      document.addEventListener('mousemove', e => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-      });
+      document.addEventListener('mousemove', throttle((e: React.MouseEvent) => {
+          mouse.x = e.clientX;
+          mouse.y = e.clientY;
+      }, 100));
 
       let displX = 0;
       let displY = 0;
@@ -68,33 +69,34 @@ const SongList: React.FC<ISongListAlbums> = ({ albums, active, mouseX, mouseY })
     }, []);
 
     useEffect(() => {
-      if(active) {
-        const halfX: number = window.innerWidth / 2;
-        const halfY: number = window.innerHeight / 2;
+        if(active) {
+          const halfX: number = window.innerWidth / 2;
+          const halfY: number = window.innerHeight / 2;
 
-        gsap.to(distortRef.current, {
-          y: `${mouseY - halfY}px`,
-          x: `${mouseX - halfX}px`,
-          duration: 0.5
-        });
+          gsap.to(distortRef.current, {
+            y: `${mouseY - halfY}px`,
+            x: `${mouseX - halfX}px`,
+            duration: 0.5
+          });
 
-        gsap.fromTo(gaussianBlurRef.current, {
-          attr: {
-            stdDeviation: 3
-          }
-        },
-        {
-          attr: {
-            stdDeviation: 0
+          gsap.fromTo(gaussianBlurRef.current, {
+            attr: {
+              stdDeviation: 3
+            }
           },
-          duration: .5
-        });
-      }
+          {
+            attr: {
+              stdDeviation: 0
+            },
+            duration: .5
+          });
+        }
+
     }, [mouseX, mouseY, active]);
 
     return (
         <>
-            <svg ref={ distortRef } className="distort" width="500" height="500" viewBox="0 0 1000 1000">
+            <svg ref={ distortRef } className="distort" viewBox="0 0 1000 1000">
               <filter id="filter">
                 <feTurbulence type="fractalNoise" baseFrequency="0.01 0.005" numOctaves="5" seed="6" stitchTiles="noStitch" x="0%" y="0%" width="100%" height="100%" result="noise"/>
 						    <feDisplacementMap ref={ displacementMapRef }  in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="B" x="0%" y="0%" width="100%" height="100%" filterUnits="userSpaceOnUse" result="distortion"/>
@@ -107,7 +109,7 @@ const SongList: React.FC<ISongListAlbums> = ({ albums, active, mouseX, mouseY })
               <g filter="url(#filter)">
                 { albums.map(({id, image, width, height}) => {
                   return <image
-                      className={`distort__img ${id === active ? "distort__img--active" : "" }`} xlinkHref={image} height={height} width={width} key={ id }
+                      className={`distort__img ${id === active ? "distort__img--active" : "" }`} xlinkHref={image}  key={ id }
                     />;
                 })}
               </g>
