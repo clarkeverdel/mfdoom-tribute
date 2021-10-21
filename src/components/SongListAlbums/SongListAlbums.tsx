@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, SetStateAction } from 'react';
 import { gsap } from 'gsap';
 import { Album } from '../../../types';
+import { lineEq, lerp, distance } from 'static/js/utils/calculators';
 import throttle from 'lodash.debounce';
 
 interface ISongListAlbums {
@@ -33,26 +34,6 @@ const SongList: React.FC<ISongListAlbums> = ({ albums, active, mouseX, mouseY })
 
       let displX = 0;
       let displY = 0;
-
-      const distance = (
-        x1: number,
-        x2: number,
-        y1: number,
-        y2: number
-      ) => {
-        let a = x1 - x2;
-        let b = y1 - y2;
-        return Math.hypot(a,b);
-      };
-
-      const lineEq = (y2: number, y1: number, x2: number, x1: number, currentVal: number) => {
-        // y = mx + b
-        let m = (y2 - y1) / (x2 - x1);
-        let b = y1 - m * x1;
-        return m * currentVal + b;
-      };
-
-      const lerp = (a: number, b: number, n: number) => (1 - n) * a + n * b;
 
       const render = () => {
         displX = lerp(displX, mouse.x, 0.08);
@@ -93,6 +74,7 @@ const SongList: React.FC<ISongListAlbums> = ({ albums, active, mouseX, mouseY })
         }
 
     }, [mouseX, mouseY, active]);
+
 
     return (
         <>

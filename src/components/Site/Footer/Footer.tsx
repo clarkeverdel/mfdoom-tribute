@@ -6,9 +6,6 @@ import Image from 'next/image';
 import Banner from '../../Banner/Banner';
 import Marquee from '../../Marquee/Marquee';
 
-// Resources
-// import BubBlackLogo from '../../../static/img/logo/bubblack.svg'
-
 
 const Footer = () => {
     return (
@@ -35,7 +32,6 @@ const Footer = () => {
                     <div></div>
                     <div>
                         <Banner type="circle">
-                            {/* <BubBlackLogo /> */}
                             <Image width={95} height={34} src="/static/img/logo/bubblack.svg" alt="Logo" />
                         </Banner>
                     </div>
