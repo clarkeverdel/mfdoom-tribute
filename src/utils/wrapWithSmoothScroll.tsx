@@ -10,7 +10,8 @@ export const SmoothScroll: React.FC = ({ children }) => {
 
   useLayoutEffect(() => {
     const anim = gsap.to(scrollContainer.current, {
-      y: -(Number(height) - document.documentElement.clientHeight)
+      y: -(Number(height) - document.documentElement.clientHeight),
+      ease: "slow(0.7, 0.7, false)",
     });
 
     if (typeof window !== "undefined") {
@@ -26,7 +27,7 @@ export const SmoothScroll: React.FC = ({ children }) => {
       trigger: document.body,
       start: "top top",
       end: "bottom bottom",
-      scrub: 1,
+      scrub: .65,
       animation: anim
     });
 
