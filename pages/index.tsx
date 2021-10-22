@@ -22,7 +22,7 @@ import PageHeading from '../src/components/PageHeading/PageHeading';
 import SongList from '../src/components/SongList/SongList';
 import Footer from '../src/components/Site/Footer/Footer';
 
-import { SmoothScroll } from 'utils/wrapWithSmoothScroll';
+// import { SmoothScroll } from 'utils/wrapWithSmoothScroll';
 
 interface IProps {
     songs: Song[]
@@ -31,7 +31,7 @@ interface IProps {
 // Component
 const Home: React.FC<IProps> = ({songs}) => {
 
-    return <SmoothScroll>
+    return <>
             <PageHeading />
             <IntroSection />
             <AllCaps />
@@ -51,7 +51,7 @@ const Home: React.FC<IProps> = ({songs}) => {
                 <BlinkingMask />
             </section>
             <Footer />
-          </SmoothScroll>;
+          </>;
 };
 
 export const getStaticProps: GetStaticProps = async() => {
