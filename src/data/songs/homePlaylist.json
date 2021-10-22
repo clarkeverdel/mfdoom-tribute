@@ -48,7 +48,7 @@
         "title": "Great Day",
         "artist": "Mad Villain",
         "album": {
-          "image": "/static/img/albums/madvillain.png",
+          "image": "/static/img/albums/madvillain.jpg",
           "width": 1000,
           "height": 1000
         },

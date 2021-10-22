@@ -1,3 +1,6 @@
+$large-beam-size: 635px;
+$small-beam-size: 435px;
+
 .blinking-mask {
     position: relative;
     display: inline-block;
@@ -19,11 +22,33 @@
         }
 
         &--1 {
+            --beam-offset-left: #{(rem($large-beam-size) / 2) * -1};
+            --phrase-left-position: calc(var(--beam-offset-left) + #{rem(-52px)});
             animation: rotatePhraseLeft 25s linear infinite;
+
+            @include mq(md) {
+                --beam-offset-left: #{(calculatevw($large-beam-size) / 2) * -1};
+                --phrase-left-position: calc(var(--beam-offset-left) + #{rem(-52px)});
+            }
+            @include mq(xxl) {
+                --beam-offset-left: #{(calculatevw($large-beam-size) / 2) * -1};
+                --phrase-left-position: calc(var(--beam-offset-left) + #{rem(-52px)});
+            }
         }
 
         &--2 {
+            --beam-offset-right: #{rem(114px) / 2};
+            --phrase-right-position: calc(var(--beam-offset-right) + #{rem(52px)});
             animation: rotatePhraseRight 25s linear infinite;
+
+            @include mq(md) {
+                --beam-offset-right: #{calculatevw($large-beam-size) / 2};
+                --phrase-right-position: calc(var(--beam-offset-right) + #{rem(52px)});
+            }
+            @include mq(xxl) {
+                --beam-offset-right: #{rem($large-beam-size) / 2};
+                --phrase-right-position: calc(var(--beam-offset-right) + #{rem(52px)});
+            }
         }
     }
 
@@ -44,12 +69,12 @@
             animation: rotateClockWise 35s linear infinite;
 
             @include mq(md) {
-                width: calculatevw(435px);
-                height: calculatevw(435px);
+                width: calculatevw($small-beam-size);
+                height: calculatevw($small-beam-size);
             }
             @include mq(xxl) {
-                width: rem(435px);
-                height: rem(435px);
+                width: rem($small-beam-size);
+                height: rem($small-beam-size);
             }
 
             > svg {
@@ -63,12 +88,12 @@
             animation: rotateCounterClockWise 50s linear infinite;
 
             @include mq(md) {
-                width: calculatevw(635px);
-                height: calculatevw(635px);
+                width: calculatevw($large-beam-size);
+                height: calculatevw($large-beam-size);
             }
             @include mq(xxl) {
-                width: rem(635px);
-                height: rem(635px);
+                width: rem($large-beam-size);
+                height: rem($large-beam-size);
             }
 
             > svg {
@@ -168,22 +193,22 @@
 
 @keyframes rotatePhraseLeft {
     0% {
-        transform: rotate(0deg) translateX(calc(-307px + -52px));
-        // transform-origin: center center
+        transform: rotate(0deg) translateX(var(--phrase-left-position));
     }
     100% {
-        transform: rotate(360deg) translateX(calc(-307px + -52px));
+        transform: rotate(360deg) translateX(var(--phrase-left-position));
 
     }
 }
 
+
+
 @keyframes rotatePhraseRight {
     0% {
-        transform: rotate(0deg) translateX(calc(307px + 52px)) rotate(180deg);
-        // transform-origin: center center
+        transform: rotate(0deg) translateX(var(--phrase-right-position)) rotate(180deg);
     }
     100% {
-        transform: rotate(360deg) translateX(calc(307px + 52px)) rotate(180deg);
+        transform: rotate(360deg) translateX(var(--phrase-right-position)) rotate(180deg);
 
     }
 }

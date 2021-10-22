@@ -89,7 +89,8 @@ const SongList: React.FC<ISongListAlbums> = ({ albums, active, mouseX, mouseY })
                 </feMerge>
               </filter>
               <g filter="url(#filter)">
-                { albums.map(({id, image, width, height}) => {
+                { albums.map(({id, image}) => {
+                  // Using xlink:href && src to support modern image formats : https://css-tricks.com/svg-fallbacks/
                   return <image
                       className={`distort__img ${id === active ? "distort__img--active" : "" }`} xlinkHref={image}  key={ id }
                     />;
