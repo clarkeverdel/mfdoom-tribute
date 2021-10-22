@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect, useState, SetStateAction } from 'react';
+import React, { useRef, useEffect, useState, SetStateAction } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import debounce from 'lodash.debounce';
@@ -8,7 +8,7 @@ export const SmoothScroll: React.FC = ({ children }) => {
   const scrollContainer = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState<SetStateAction<number>>(0);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const anim = gsap.to(scrollContainer.current, {
       y: -(Number(height) - document.documentElement.clientHeight),
       ease: "slow(0.7, 0.7, false)",
