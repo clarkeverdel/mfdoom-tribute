@@ -2,7 +2,7 @@ import React, { useEffect, useState, SetStateAction } from 'react';
 import SongListItem from '../SongListItem/SongListItem';
 import { useInView } from 'react-intersection-observer';
 import { Song } from '../../../types';
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
 
 interface ISongList {
     songs: Song[]
@@ -31,7 +31,7 @@ const SongList: React.FC<ISongList> = ({ songs }) => {
     const albums = songs.map(({id, album}) => ({ ...album, id }));
 
     const { ref, inView } = useInView({
-      threshold: 0,
+      threshold: 0
     });
 
     useEffect(() => {

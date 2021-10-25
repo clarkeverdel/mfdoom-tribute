@@ -23,7 +23,7 @@ const SongListItem = ({ id, title, artist, active, setActive, setMouseX, setMous
   const setMousePositions = useCallback(throttle((e: React.MouseEvent) => {
     setMouseX(e.clientX);
     setMouseY(e.clientY);
-  }, 10), []);
+  }, 10), [id]);
 
     return (
         <li className={`songlist__item ${active ? "songlist__item--active" : ""}`} onMouseOver={ () => setActive(id) } onMouseMove={(e) => onItemMove(e)} onMouseLeave={ () => setActive(false) }>
