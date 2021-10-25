@@ -41,7 +41,9 @@ const SongList: React.FC<ISongListAlbums> = ({ albums, active, mouseX, mouseY })
         const mouseDist = distance(displX, mouse.x, displY, mouse.y);
         const dmScale = Math.min(lineEq(50, 0, 140, 0, mouseDist), 60);
 
-        displacementMapRef.current.scale.baseVal = dmScale;
+        if(displacementMapRef.current) {
+          displacementMapRef.current.scale.baseVal = dmScale;
+        }
 
         requestAnimationFrame(() => render());
       };

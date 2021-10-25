@@ -32,9 +32,11 @@ export const SmoothScroll: React.FC = ({ children }) => {
     });
 
     function updateSize() {
+      debounce(() => {
         if (scrollContainer.current && scrollContainer.current.clientHeight) {
           setHeight(scrollContainer.current.clientHeight);
         }
+      }, 250);
     }
     let progress: number;
     ScrollTrigger.addEventListener("refreshInit", () => {
@@ -42,7 +44,7 @@ export const SmoothScroll: React.FC = ({ children }) => {
     });
     ScrollTrigger.addEventListener("refresh", () => ST.scroll(progress * ScrollTrigger.maxScroll(window)));
 
-    window.addEventListener('resize', debounce(() => updateSize(), 250));
+    window.addEventListener('resize', updateSize);
 
     return () => {
       ST.kill();
