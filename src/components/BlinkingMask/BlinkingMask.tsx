@@ -1,13 +1,19 @@
 import React, { FunctionComponent } from 'react';
 import Image from 'next/image';
+import { useInView } from 'react-intersection-observer';
 
 // Resources
 
 type TBlinkingMask = {}
 
 const BlinkingMask: FunctionComponent<TBlinkingMask> = () => {
+
+    const { ref, inView }  = useInView({
+      threshold: 0
+    })
+
     return (
-        <div className="blinking-mask">
+        <div className={`blinking-mask${inView ? ' run-animation' : ''}`} ref={ref}>
             <div className="blinking-mask__phrase blinking-mask__phrase--1"><Image src="/static/img/the_illest.svg" width={17} height={99} alt="The Illest Phrase"/></div>
             <div className="blinking-mask__phrase blinking-mask__phrase--2"><Image src="/static/img/the_illest.svg" width={17} height={99} alt="The Illest Phrase"/></div>
 

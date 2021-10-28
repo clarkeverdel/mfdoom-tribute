@@ -50,6 +50,15 @@ $small-beam-size: 435px;
                 --phrase-right-position: calc(var(--beam-offset-right) + #{rem(52px)});
             }
         }
+
+        &--1,
+        &--2 {
+            animation-play-state: paused;
+
+            .run-animation & {
+                animation-play-state: running;
+            }
+        }
     }
 
     &__beams {

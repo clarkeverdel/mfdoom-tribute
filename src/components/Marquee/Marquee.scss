@@ -1,10 +1,15 @@
+
+
 .marquee {
     display: flex;
+    --offset: calc((100vw - #{$container-max-width}) / 2);
+    --move-initial: calc(var(--offset) * -1);
+    --move-final: calc(-33.33%);
 
     &__track {
         display: flex;
         animation: marquee 10s linear infinite;
-        will-change: transform;
+        animation-play-state: paused;
 
         * {
             display: inline-flex;
@@ -13,17 +18,25 @@
         }
 
         > * {
-            margin: 0 $spacing-xxl 0 0;
+            margin: 0 var(--offset) 0 0;
+        }
+
+        &.run-animation {
+            animation-play-state: running;
+
+            &:hover {
+                animation-play-state: paused;
+            }
         }
     }
 }
 
 @keyframes marquee {
     0% {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
     }
 
     100% {
-        transform: translateX(-50%);
+        transform: translate3d(var(--move-final), 0, 0);
     }
 }

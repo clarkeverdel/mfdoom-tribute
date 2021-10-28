@@ -1,14 +1,21 @@
+import { useInView } from 'react-intersection-observer';
+
 interface IMarquee {
     children: React.ReactNode
 }
 
 const Marquee = ( { children }: IMarquee ) => {
 
-    // TODO: Caluclate animation duration based on content and apply inline
+    const { ref, inView }  = useInView({
+      threshold: 0
+    })
 
     return (
-        <div className="marquee">
-            <div className="marquee__track">
+        <div className="marquee" ref={ref}>
+            <div className={`marquee__track${inView ? ' run-animation' : ''}`}>
+                <div>
+                  { children }
+                </div>
                 <div>
                   { children }
                 </div>

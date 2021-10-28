@@ -22,14 +22,8 @@ $grid-breakpoints: (
     xxl: 1500
 );
 
-$container-max-widths: (
-    sm: 480,
-    md: 720,
-    lg: 960,
-    xl: 1150,
-    xxl: 1440,
-    max: 1920
-);
+$container-max-width: (1150px) + $grid-gutter-width * 2;
+
 
 /** Block */
 $spacing-base: rem(8px);
