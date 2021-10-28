@@ -8,7 +8,7 @@ const Marquee = ( { children }: IMarquee ) => {
 
     const { ref, inView }  = useInView({
       threshold: 0
-    })
+    });
 
     return (
         <div className="marquee" ref={ref}>

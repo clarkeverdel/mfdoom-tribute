@@ -10,7 +10,7 @@ const BlinkingMask: FunctionComponent<TBlinkingMask> = () => {
 
     const { ref, inView }  = useInView({
       threshold: 0
-    })
+    });
 
     return (
         <div className={`blinking-mask${inView ? ' run-animation' : ''}`} ref={ref}>

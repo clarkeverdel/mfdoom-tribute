@@ -1,15 +1,16 @@
-import React, { useCallback, useEffect, useMemo, useState, SetStateAction } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-// import debounce from 'lodash.debounce';
-
 
 export const SmoothScroll: React.FC = ({ children }) => {
-  const [scrollContainerNode, setScrollContainerNode] = useState<HTMLElement>();
+  const [scrollContainerNode, setScrollContainerNode] = useState<HTMLDivElement>();
   const [height, setHeight] = useState<Number>();
 
-  // SetSize Method
-  const setSize = (node?: HTMLElement) => {
+  /**
+   *
+   * @param node
+   */
+  const setSize = (node?: HTMLDivElement) => {
     const scrollContainer = node || scrollContainerNode;
 
     if (scrollContainer && scrollContainer.clientHeight) {
@@ -18,10 +19,15 @@ export const SmoothScroll: React.FC = ({ children }) => {
     }
   }
 
-  // On init (step 1)
-  const scrollContainer = useCallback((node: HTMLElement) => {
-    setSize(node);
-    window.addEventListener('resize', () => setSize(node));
+  /**
+   *
+   * @param node
+   */
+  const scrollContainer = useCallback((node: HTMLDivElement) => {
+    if(node){
+      setSize(node);
+      window.addEventListener('resize', () => setSize(node));
+    }
   }, [])
 
 
