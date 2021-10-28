@@ -1,26 +1,40 @@
-import React, { useRef, useEffect, useState, SetStateAction } from 'react';
+import React, { useCallback, useEffect, useMemo, useState, SetStateAction } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import debounce from 'lodash.debounce';
+// import debounce from 'lodash.debounce';
 
 
 export const SmoothScroll: React.FC = ({ children }) => {
-  const scrollContainer = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState<SetStateAction<number>>(0);
+  const [scrollContainerNode, setScrollContainerNode] = useState<HTMLElement>();
+  const [height, setHeight] = useState<Number>();
+
+  // SetSize Method
+  const setSize = (node?: HTMLElement) => {
+    const scrollContainer = node || scrollContainerNode;
+
+    if (scrollContainer && scrollContainer.clientHeight) {
+      setScrollContainerNode(scrollContainer);
+      setHeight(scrollContainer.clientHeight);
+    }
+  }
+
+  // On init (step 1)
+  const scrollContainer = useCallback((node: HTMLElement) => {
+    setSize(node);
+    window.addEventListener('resize', () => setSize(node));
+  }, [])
+
 
   useEffect(() => {
-    const anim = gsap.to(scrollContainer.current, {
+    if(!scrollContainerNode) return;
+
+    const anim = gsap.to(scrollContainerNode, {
       y: -(Number(height) - document.documentElement.clientHeight),
       ease: "slow(0.7, 0.7, false)",
     });
 
     if (typeof window !== "undefined") {
       gsap.registerPlugin(ScrollTrigger);
-    }
-
-    if (scrollContainer.current && scrollContainer.current.clientHeight) {
-      setHeight(scrollContainer.current.clientHeight);
-      document.body.style.height = height + "px";
     }
 
     const ST = ScrollTrigger.create({
@@ -31,25 +45,20 @@ export const SmoothScroll: React.FC = ({ children }) => {
       animation: anim
     });
 
-    function updateSize() {
-      debounce(() => {
-        if (scrollContainer.current && scrollContainer.current.clientHeight) {
-          setHeight(scrollContainer.current.clientHeight);
-        }
-      }, 250);
-    }
     let progress: number;
+
     ScrollTrigger.addEventListener("refreshInit", () => {
       progress = ST.progress;
     });
     ScrollTrigger.addEventListener("refresh", () => ST.scroll(progress * ScrollTrigger.maxScroll(window)));
 
-    window.addEventListener('resize', updateSize);
+    // Set new size
+    document.body.style.height = height + "px";
 
     return () => {
       ST.kill();
 
-      window.removeEventListener('resize', updateSize);
+      window.removeEventListener('resize', () => setSize());
       ScrollTrigger.removeEventListener("refreshInit", () => {
         progress = ST.progress;
       });
