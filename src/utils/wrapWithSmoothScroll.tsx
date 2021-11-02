@@ -2,75 +2,76 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 export const SmoothScroll: React.FC = ({ children }) => {
   const [scrollContainerNode, setScrollContainerNode] = useState<HTMLDivElement>();
-  const [height, setHeight] = useState<Number>();
-
-  /**
-   *
-   * @param node
-   */
-  const setSize = (node?: HTMLDivElement) => {
-    const scrollContainer = node || scrollContainerNode;
-
-    if (scrollContainer && scrollContainer.clientHeight) {
-      setScrollContainerNode(scrollContainer);
-      setHeight(scrollContainer.clientHeight);
-    }
-  }
+  let scrollTrigger: ScrollTrigger;
 
   /**
    *
    * @param node
    */
   const scrollContainer = useCallback((node: HTMLDivElement) => {
-    if(node){
-      setSize(node);
-      window.addEventListener('resize', () => setSize(node));
+    if(node !== null){
+      setScrollContainerNode(node);
     }
-  }, [])
-
+  }, []);
 
   useEffect(() => {
-    if(!scrollContainerNode) return;
-
-    const anim = gsap.to(scrollContainerNode, {
-      y: -(Number(height) - document.documentElement.clientHeight),
-      ease: "slow(0.7, 0.7, false)",
-    });
-
-    if (typeof window !== "undefined") {
-      gsap.registerPlugin(ScrollTrigger);
+    const setScrollPosition = () => {
+      if(scrollTrigger) {
+        scrollTrigger.scroll(scrollTrigger.progress * ScrollTrigger.maxScroll(window));
+      }
     }
 
-    const ST = ScrollTrigger.create({
-      trigger: document.body,
-      start: "top top",
-      end: "bottom bottom",
-      scrub: .65,
-      animation: anim
-    });
+    const setEventListeners = () => {
+      window.addEventListener('resize', () => initScroll());
+      ScrollTrigger.addEventListener("refresh", setScrollPosition);
+    }
 
-    let progress: number;
+    initScroll();
+    setEventListeners();
 
-    ScrollTrigger.addEventListener("refreshInit", () => {
-      progress = ST.progress;
-    });
-    ScrollTrigger.addEventListener("refresh", () => ST.scroll(progress * ScrollTrigger.maxScroll(window)));
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', () => initScroll());
+      ScrollTrigger.removeEventListener('refresh', setScrollPosition);
+    };
+
+  }, [scrollContainerNode]);
+
+  const initScroll = () => {
+    if(!scrollContainerNode) return;
+
+    const height = scrollContainerNode.clientHeight;
+
+    const createScrollTrigger = () => {
+      if(scrollTrigger) {
+        scrollTrigger.kill();
+      }
+
+      const anim = gsap.to(scrollContainerNode, {
+        y: -(Number(height) - document.documentElement.clientHeight),
+        ease: "slow(0.7, 0.7, false)",
+      });
+
+      scrollTrigger = ScrollTrigger.create({
+        trigger: document.body,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: .65,
+        animation: anim
+      });
+    }
+
+    createScrollTrigger();
 
     // Set new size
     document.body.style.height = height + "px";
-
-    return () => {
-      ST.kill();
-
-      window.removeEventListener('resize', () => setSize());
-      ScrollTrigger.removeEventListener("refreshInit", () => {
-        progress = ST.progress;
-      });
-      ScrollTrigger.removeEventListener("refresh", () => ST.scroll(progress * ScrollTrigger.maxScroll(window)));
-    };
-  }, [height]);
+  };
 
   return <>
       <main style={{
