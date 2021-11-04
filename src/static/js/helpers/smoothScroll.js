@@ -1,7 +1,7 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 // this is the helper function that sets it all up. Pass in the content <div> and then the wrapping viewport <div> (can be the elements or selector text). It also sets the default "scroller" to the content so you don't have to do that on all your ScrollTriggers.
-const smoothScroll = (content, viewport?, smoothness?) => {
+const smoothScroll = (content, viewport, smoothness) => {
 
   if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
