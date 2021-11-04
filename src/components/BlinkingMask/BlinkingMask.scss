@@ -1,6 +1,8 @@
 $large-beam-size: 635px;
 $small-beam-size: 435px;
 
+ // Issue Safari: https://stackoverflow.com/questions/46373626/workaround-for-safari-bug-when-an-element-with-animated-translate-is-resize
+
 .blinking-mask {
     position: relative;
     display: inline-block;

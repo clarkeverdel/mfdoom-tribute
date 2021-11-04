@@ -12,6 +12,7 @@ body,
 body {
     -webkit-font-smoothing: antialiased;
     font-size: rem(16px);
+    margin: 0;
 
     @include mq(lg) {
         font-size: calculatevw(16px);
