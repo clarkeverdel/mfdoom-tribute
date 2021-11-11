@@ -41,7 +41,7 @@
     "start": "node server.js 0.0.0.0"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "yarn lint",
+    "*.{js,jsx,ts,tsx}": "eslint --fix",
     "*.scss": "yarn stylelint"
   },
   "husky": {
@@ -76,7 +76,7 @@
     "@storybook/addons": "^5.3.18",
     "@storybook/preset-typescript": "^3.0.0",
     "@storybook/react": "^5.3.18",
-    "@svgr/webpack": "^5.3.1",
+    "@svgr/webpack": "^5.5.0",
     "@types/enzyme": "^3.10.5",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/highlight.js": "^9.12.4",

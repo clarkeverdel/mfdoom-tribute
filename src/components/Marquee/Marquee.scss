@@ -1,7 +1,7 @@
 
-
 .marquee {
     display: flex;
+
     --offset: calc((100vw - #{$container-max-width}) / 2);
     --move-initial: calc(var(--offset) * -1);
     --move-final: calc(-33.33%);

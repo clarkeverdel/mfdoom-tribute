@@ -1,7 +1,9 @@
 $large-beam-size: 635px;
 $small-beam-size: 435px;
 
- // Issue Safari: https://stackoverflow.com/questions/46373626/workaround-for-safari-bug-when-an-element-with-animated-translate-is-resize
+$mobile-view-factor: 0.4;
+
+// Issue Safari: https://stackoverflow.com/questions/46373626/workaround-for-safari-bug-when-an-element-with-animated-translate-is-resize
 
 .blinking-mask {
     position: relative;
@@ -16,31 +18,32 @@ $small-beam-size: 435px;
         right: 0;
         bottom: 0;
         margin: auto;
-        height: 104px;
-        width: 7px;
+        height: rem(104px * $mobile-view-factor);
+        width: rem(17px * $mobile-view-factor);
 
         @include mq(md) {
             width: 17px;
+            height: 104px;
         }
 
         &--1 {
-            --beam-offset-left: #{(rem($large-beam-size) / 2) * -1};
-            --phrase-left-position: calc(var(--beam-offset-left) + #{rem(-52px)});
+            --beam-offset-left: #{(rem($large-beam-size * $mobile-view-factor) / 2) * - 1};
+            --phrase-left-position: calc(var(--beam-offset-left) + #{rem(-21px)});
             animation: rotatePhraseLeft 25s linear infinite;
 
             @include mq(md) {
-                --beam-offset-left: #{(calculatevw($large-beam-size) / 2) * -1};
+                --beam-offset-left: #{(calculatevw($large-beam-size) / 2) * - 1};
                 --phrase-left-position: calc(var(--beam-offset-left) + #{rem(-52px)});
             }
             @include mq(xxl) {
-                --beam-offset-left: #{(calculatevw($large-beam-size) / 2) * -1};
+                --beam-offset-left: #{(calculatevw($large-beam-size) / 2) * - 1};
                 --phrase-left-position: calc(var(--beam-offset-left) + #{rem(-52px)});
             }
         }
 
         &--2 {
-            --beam-offset-right: #{rem(114px) / 2};
-            --phrase-right-position: calc(var(--beam-offset-right) + #{rem(52px)});
+            --beam-offset-right: #{rem($large-beam-size * $mobile-view-factor) / 2};
+            --phrase-right-position: calc(var(--beam-offset-right) + #{rem(21px)});
             animation: rotatePhraseRight 25s linear infinite;
 
             @include mq(md) {
@@ -75,8 +78,8 @@ $small-beam-size: 435px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: rem(174px);
-            height: rem(174px);
+            width: rem($small-beam-size * $mobile-view-factor);
+            height: rem($small-beam-size * $mobile-view-factor);
             animation: rotateClockWise 35s linear infinite;
 
             @include mq(md) {
@@ -94,8 +97,8 @@ $small-beam-size: 435px;
         }
 
         &--large {
-            width: rem(254px);
-            height: rem(254px);
+            width: rem($large-beam-size * $mobile-view-factor);
+            height: rem($large-beam-size * $mobile-view-factor);
             animation: rotateCounterClockWise 50s linear infinite;
 
             @include mq(md) {
@@ -119,7 +122,7 @@ $small-beam-size: 435px;
         top: 50%;
         transform: translate(-50%, -50%);
         height: auto;
-        width: rem(72px);
+        width: rem(181px * $mobile-view-factor);
         animation: flashFlare 2s  infinite;
 
         @include mq(md) {
@@ -152,17 +155,19 @@ $small-beam-size: 435px;
 
 @keyframes rotateClockWise {
     0% {
-        transform: translate(-50%, -50%) rotate(0deg) ;
+        transform: translate(-50%, -50%) rotate(0deg);
     }
+
     100% {
-        transform:  translate(-50%, -50%) rotate(360deg);
+        transform: translate(-50%, -50%) rotate(360deg);
     }
 }
 
 @keyframes rotateCounterClockWise {
     0% {
-        transform: rotate(0deg) ;
+        transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(-360deg);
     }
@@ -172,54 +177,60 @@ $small-beam-size: 435px;
     0% {
         transform: translate(-50%, -50%) scale(1);
     }
+
     4% {
-        transform: translate(-50%, -50%) scale(.97);
+        transform: translate(-50%, -50%) scale(0.97);
     }
+
     8% {
-        transform: translate(-50%, -50%) scale(.99);
+        transform: translate(-50%, -50%) scale(0.99);
     }
+
     12% {
         transform: translate(-50%, -50%) scale(1.03);
     }
+
     18% {
-        transform: translate(-50%, -50%) scale(.97);
+        transform: translate(-50%, -50%) scale(0.97);
     }
+
     33% {
         transform: translate(-50%, -50%) scale(0.95);
     }
+
     41% {
         transform: translate(-50%, -50%) scale(1.06);
     }
+
     52% {
-        transform: translate(-50%, -50%) scale(.95);
+        transform: translate(-50%, -50%) scale(0.95);
     }
+
     66% {
         transform: translate(-50%, -50%) scale(1.15);
     }
+
     100% {
         transform: translate(-50%, -50%) scale(1);
     }
 }
 
-
 @keyframes rotatePhraseLeft {
     0% {
         transform: rotate(0deg) translateX(var(--phrase-left-position));
     }
+
     100% {
         transform: rotate(360deg) translateX(var(--phrase-left-position));
-
     }
 }
-
-
 
 @keyframes rotatePhraseRight {
     0% {
         transform: rotate(0deg) translateX(var(--phrase-right-position)) rotate(180deg);
     }
+
     100% {
         transform: rotate(360deg) translateX(var(--phrase-right-position)) rotate(180deg);
-
     }
 }

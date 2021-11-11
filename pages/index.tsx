@@ -1,7 +1,7 @@
 // Libs
 import React from 'react';
 import { GetStaticProps } from 'next';
-import Image from 'next/image';
+import Colon from '../public/static/img/colon.svg';
 
 // Types
 import { Song } from '../types';
@@ -42,7 +42,7 @@ const Home: React.FC<IProps> = ({songs}) => {
             <section className="section">
                 <div className="container grid-1">
                     <div className="col-1">
-                        <h2>Listen <span className="section__title__colon"><Image src="/static/img/colon.svg" width={38} height={85} alt="Colon" /></span></h2>
+                        <h2>Listen <span className="section__title__colon"><Colon /></span></h2>
                         <SongList songs={songs} />
                     </div>
                 </div>
