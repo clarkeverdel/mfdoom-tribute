@@ -41,7 +41,7 @@
     "allowUmdGlobalAccess": true
   },
   "include": [
-    // "pages/**/*",
+    "pages/**/*",
     "src/**/*",
     "custom.d.ts"
   ],
