@@ -38,7 +38,7 @@
     "test:coverage": "jest --config config/tests/jest.config.js --coverage --verbose",
     "lint": "next lint --fix",
     "stylelint": "stylelint **/*.scss --syntax=scss",
-    "start": "node server.js 0.0.0.0"
+    "start": "next start"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix",
