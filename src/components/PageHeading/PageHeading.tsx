@@ -2,17 +2,11 @@
 import React from 'react';
 import Image from 'next/image';
 
-// Images
-
-// Resources
-
 // Components
 import Banner from '../Banner/Banner';
 
-
 // Interface
 interface IPageHeading {}
-
 
 const PageHeading = ({}: IPageHeading) => {
     return <div className="pageheading">
@@ -43,24 +37,23 @@ const PageHeading = ({}: IPageHeading) => {
                 <Image
                   src="/static/img/mask.png"
                   layout="fill"
-                  priority={true}
                   alt="Mask"
                 />
               </div>
 
               <h1>
                 <div>
-                    <span>The</span>
-                    <span>super</span>
+                    <span data-word="The">The</span>
+                    <span data-word="super">super</span>
                 </div>
                 <div>
-                    <span>villain.</span>
+                    <span data-word="villain.">villain.</span>
                     <Banner>
                         <i>You are diving into the world of the super villain — </i>
                         <strong> MF DOOM</strong>
                     </Banner>
                 </div>
-                <div>MF DOOM.</div>
+                <div data-word="MF DOOM.">MF DOOM.</div>
               </h1>
             </div>
 
