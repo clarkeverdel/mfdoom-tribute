@@ -2,9 +2,15 @@
 .marquee {
     display: flex;
 
-    --offset: calc((100vw - #{$container-max-width}) / 2);
+    --offset: #{$grid-gutter-width};
     --move-initial: calc(var(--offset) * -1);
     --move-final: calc(-33.33%);
+
+    @media only screen AND (min-width: $container-max-width) {
+        --offset: calc((100vw - #{$container-max-width}) / 2);
+        --move-initial: calc(var(--offset) * -1);
+        --move-final: calc(-33.33%);
+    }
 
     &__track {
         display: flex;
