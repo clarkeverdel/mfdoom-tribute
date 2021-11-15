@@ -37,8 +37,8 @@
     "test:watch": "jest --config config/tests/jest.config.js --watch --verbose",
     "test:coverage": "jest --config config/tests/jest.config.js --coverage --verbose",
     "lint": "next lint --fix",
-    "stylelint": "stylelint **/*.scss --syntax=scss",
-    "start": "next start"
+    "stylelint": "stylelint **/*.scss --syntax=scss --fix",
+    "start": "next start**"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix",

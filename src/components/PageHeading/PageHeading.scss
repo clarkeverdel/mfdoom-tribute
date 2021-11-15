@@ -164,6 +164,12 @@ $surrounding-padding: 3.5rem;
                             transform: translateY(-50%);
 
                             --glitch-transform--y: -50%;
+
+                            // Optimize reveal effect bar height
+                            &::after {
+                                top: 4%;
+                                bottom: 24%;
+                            }
                         }
 
                         &:nth-child(2) {
@@ -174,6 +180,10 @@ $surrounding-padding: 3.5rem;
 
                             &::after {
                                 animation-delay: 1.4s;
+
+                                // Optmize reveal effect bar height
+                                top: 18%;
+                                bottom: 13%;
                             }
                         }
                     }
@@ -201,6 +211,14 @@ $surrounding-padding: 3.5rem;
                             animation-delay: 1.8s;
                         }
                     }
+
+                    > span {
+                        // Optimize reveal effect bar height
+                        &::after {
+                            top: 0%;
+                            bottom: 25%;
+                        }
+                    }
                 }
 
                 &:nth-child(3) {
@@ -212,6 +230,10 @@ $surrounding-padding: 3.5rem;
 
                     &::after {
                         animation-delay: 2.2s;
+
+                        // Optimize reveal effect bar height
+                        top: 9%;
+                        bottom: 24%;
                     }
 
                     @include mq(md) {

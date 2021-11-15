@@ -36,7 +36,7 @@ $mobile-view-factor: 0.4;
                 --phrase-left-position: calc(var(--beam-offset-left) + #{rem(-52px)});
             }
             @include mq(xxl) {
-                --beam-offset-left: #{(calculatevw($large-beam-size) / 2) * - 1};
+                --beam-offset-left: #{(rem($large-beam-size) / 2) * - 1};
                 --phrase-left-position: calc(var(--beam-offset-left) + #{rem(-52px)});
             }
         }
