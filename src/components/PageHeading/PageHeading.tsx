@@ -38,6 +38,7 @@ const PageHeading = ({}: IPageHeading) => {
                   src="/static/img/mask.png"
                   layout="fill"
                   alt="Mask"
+                  priority={true}
                 />
               </div>
 
