@@ -1,7 +1,5 @@
 # MF Doom Tribute Site
 
-Next Boilerplate is a template repository to quickly start a new [Next.js](https://nextjs.org/docs/getting-started) project.
-
 ## Getting started
 This project was bootstrapped with Next.js. Please, read the docs to get up to speed with how pages, routing, server-side functions and more works.
 
