@@ -32,5 +32,5 @@ This project uses [TypeScript](https://www.typescriptlang.org/) for static check
 #### Husky, ESLint, StyleLint and LintStaged
 This project uses Husky to automatically run ESLint, Stylelint, LintStaged and the test suite for every commit. This is done by using the `precommit` script found in `package.json`. Never run `--no-verify` as you don't want to ignore these settings. If you have an issue with the config, please update the config file of that linter accordingly.
 
-### GSAP
+#### GSAP
 This project uses GSAP, an animation library, to handle fancy animations on the website. These are mainly tied into the scroll plugin of GSAP to animate based on the scroll position. 
